@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		816FA0B5A7AA9EFAFFE232FB /* Pods_iBuy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A0057A39CBED21A351EA4F /* Pods_iBuy.framework */; };
 		B301BE2D26C0BE88009C9F11 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B301BE2C26C0BE88009C9F11 /* Search.storyboard */; };
 		B301BE2F26C0C032009C9F11 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B301BE2E26C0C032009C9F11 /* ProductCell.xib */; };
 		B301BE3126C0C2FE009C9F11 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B301BE3026C0C2FE009C9F11 /* CategoryCell.xib */; };
@@ -24,6 +23,7 @@
 		B324020026BA496E00102998 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B32401FF26BA496E00102998 /* CountryCell.xib */; };
 		B341297026C23131000A1ED2 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B341296F26C23131000A1ED2 /* ProductCell.swift */; };
 		B341297226C2331D000A1ED2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B341297126C2331D000A1ED2 /* Extensions.swift */; };
+		B3445952986B70F749C59079 /* Pods_PokeAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CE4498139C45CBE13B0527 /* Pods_PokeAPI.framework */; };
 		B35B5FB626BB8FC80067C8DA /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B5FB526BB8FC80067C8DA /* Networking.swift */; };
 		B35B5FB826BB93790067C8DA /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B5FB726BB93790067C8DA /* CountryModel.swift */; };
 		B36C566A26BD9EFA00594EED /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566926BD9EFA00594EED /* Storage.swift */; };
@@ -38,7 +38,7 @@
 		B3D0996826C31B3C0051A1CD /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D0996726C31B3C0051A1CD /* SearchVM.swift */; };
 		B3F2AA6D26C1C0A000D26B9A /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F2AA6C26C1C0A000D26B9A /* SearchVC.swift */; };
 		B3F2AA6F26C1C49100D26B9A /* CategoriesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F2AA6E26C1C49100D26B9A /* CategoriesVM.swift */; };
-		D4CCB7B87E407578AABD55AE /* Pods_iBuyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2A3523610C77B472A6D3CB /* Pods_iBuyTests.framework */; };
+		C637A586C57073F734123A4F /* Pods_PokeAPITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA20929AA6358044ECBFA5C1 /* Pods_PokeAPITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,11 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		13A51F293F827C2928A6ACDD /* Pods-iBuy-iBuyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBuy-iBuyUITests.release.xcconfig"; path = "Target Support Files/Pods-iBuy-iBuyUITests/Pods-iBuy-iBuyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		39211E6270DB417B7045BA74 /* Pods-iBuyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBuyTests.debug.xcconfig"; path = "Target Support Files/Pods-iBuyTests/Pods-iBuyTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4707C4F4AA970C1A11A7C6DE /* Pods-iBuy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBuy.release.xcconfig"; path = "Target Support Files/Pods-iBuy/Pods-iBuy.release.xcconfig"; sourceTree = "<group>"; };
-		9C2A3523610C77B472A6D3CB /* Pods_iBuyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iBuyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B14C91B700B9CC9E598F1A9D /* Pods_iBuy_iBuyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iBuy_iBuyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11E76126F392D82B530E77C8 /* Pods-PokeAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeAPITests.release.xcconfig"; path = "Target Support Files/Pods-PokeAPITests/Pods-PokeAPITests.release.xcconfig"; sourceTree = "<group>"; };
+		72CE4498139C45CBE13B0527 /* Pods_PokeAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		785CDAC149232E46A28ABA86 /* Pods-PokeAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeAPITests.debug.xcconfig"; path = "Target Support Files/Pods-PokeAPITests/Pods-PokeAPITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A610132C8CC4CB8207D74987 /* Pods-PokeAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeAPI.release.xcconfig"; path = "Target Support Files/Pods-PokeAPI/Pods-PokeAPI.release.xcconfig"; sourceTree = "<group>"; };
 		B301BE2C26C0BE88009C9F11 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		B301BE2E26C0C032009C9F11 /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 		B301BE3026C0C2FE009C9F11 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
@@ -64,7 +63,7 @@
 		B301BE3426C0C81D009C9F11 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		B323945E26CC72B3000F28C6 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		B323946026CC72D3000F28C6 /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
-		B32401C426BA19D800102998 /* iBuy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBuy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B32401C426BA19D800102998 /* PokeAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B32401C726BA19D800102998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B32401C926BA19D800102998 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B32401CB26BA19D800102998 /* SelectCountryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCountryVC.swift; sourceTree = "<group>"; };
@@ -72,7 +71,7 @@
 		B32401D026BA19DA00102998 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B32401D326BA19DA00102998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B32401D526BA19DA00102998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B32401DA26BA19DA00102998 /* iBuyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBuyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B32401DA26BA19DA00102998 /* PokeAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokeAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B32401E026BA19DA00102998 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B32401FF26BA496E00102998 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
 		B341296F26C23131000A1ED2 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
@@ -91,10 +90,8 @@
 		B3D0996726C31B3C0051A1CD /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		B3F2AA6C26C1C0A000D26B9A /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		B3F2AA6E26C1C49100D26B9A /* CategoriesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVM.swift; sourceTree = "<group>"; };
-		B3F6B7264DCE0536DD1D3ED2 /* Pods-iBuy-iBuyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBuy-iBuyUITests.debug.xcconfig"; path = "Target Support Files/Pods-iBuy-iBuyUITests/Pods-iBuy-iBuyUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		CB6CCBE2FF0965A8CEE29188 /* Pods-iBuy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBuy.debug.xcconfig"; path = "Target Support Files/Pods-iBuy/Pods-iBuy.debug.xcconfig"; sourceTree = "<group>"; };
-		EF8B8D759BD7BA7DA58A9019 /* Pods-iBuyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBuyTests.release.xcconfig"; path = "Target Support Files/Pods-iBuyTests/Pods-iBuyTests.release.xcconfig"; sourceTree = "<group>"; };
-		F9A0057A39CBED21A351EA4F /* Pods_iBuy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iBuy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2C93811C0CAA75646345CEB /* Pods-PokeAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeAPI.debug.xcconfig"; path = "Target Support Files/Pods-PokeAPI/Pods-PokeAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		CA20929AA6358044ECBFA5C1 /* Pods_PokeAPITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeAPITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				816FA0B5A7AA9EFAFFE232FB /* Pods_iBuy.framework in Frameworks */,
+				B3445952986B70F749C59079 /* Pods_PokeAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,26 +107,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4CCB7B87E407578AABD55AE /* Pods_iBuyTests.framework in Frameworks */,
+				C637A586C57073F734123A4F /* Pods_PokeAPITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9D69396490EC958CA4F9E193 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CB6CCBE2FF0965A8CEE29188 /* Pods-iBuy.debug.xcconfig */,
-				4707C4F4AA970C1A11A7C6DE /* Pods-iBuy.release.xcconfig */,
-				B3F6B7264DCE0536DD1D3ED2 /* Pods-iBuy-iBuyUITests.debug.xcconfig */,
-				13A51F293F827C2928A6ACDD /* Pods-iBuy-iBuyUITests.release.xcconfig */,
-				39211E6270DB417B7045BA74 /* Pods-iBuyTests.debug.xcconfig */,
-				EF8B8D759BD7BA7DA58A9019 /* Pods-iBuyTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		B301BE3626C0CA28009C9F11 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,24 +127,24 @@
 		B32401BB26BA19D800102998 = {
 			isa = PBXGroup;
 			children = (
-				B32401C626BA19D800102998 /* iBuy */,
-				B32401DD26BA19DA00102998 /* iBuyTests */,
+				B32401C626BA19D800102998 /* PokeAPI */,
+				B32401DD26BA19DA00102998 /* PokeAPITests */,
 				B32401C526BA19D800102998 /* Products */,
-				9D69396490EC958CA4F9E193 /* Pods */,
-				FAD7B1EC81FB5E1931C150D1 /* Frameworks */,
+				EC5FD4A81F1B7A80DB833773 /* Pods */,
+				CF4B358B18EC3278452CC3E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		B32401C526BA19D800102998 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B32401C426BA19D800102998 /* iBuy.app */,
-				B32401DA26BA19DA00102998 /* iBuyTests.xctest */,
+				B32401C426BA19D800102998 /* PokeAPI.app */,
+				B32401DA26BA19DA00102998 /* PokeAPITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B32401C626BA19D800102998 /* iBuy */ = {
+		B32401C626BA19D800102998 /* PokeAPI */ = {
 			isa = PBXGroup;
 			children = (
 				B32401FD26BA454000102998 /* Resources */,
@@ -171,17 +155,17 @@
 				B32401F726BA446200102998 /* Model */,
 				B32401D026BA19DA00102998 /* Assets.xcassets */,
 			);
-			path = iBuy;
+			path = PokeAPI;
 			sourceTree = "<group>";
 		};
-		B32401DD26BA19DA00102998 /* iBuyTests */ = {
+		B32401DD26BA19DA00102998 /* PokeAPITests */ = {
 			isa = PBXGroup;
 			children = (
 				B32401E026BA19DA00102998 /* Info.plist */,
 				B323945E26CC72B3000F28C6 /* NetworkingTests.swift */,
 				B323946026CC72D3000F28C6 /* StorageTests.swift */,
 			);
-			path = iBuyTests;
+			path = PokeAPITests;
 			sourceTree = "<group>";
 		};
 		B32401F726BA446200102998 /* Model */ = {
@@ -260,22 +244,32 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		FAD7B1EC81FB5E1931C150D1 /* Frameworks */ = {
+		CF4B358B18EC3278452CC3E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F9A0057A39CBED21A351EA4F /* Pods_iBuy.framework */,
-				B14C91B700B9CC9E598F1A9D /* Pods_iBuy_iBuyUITests.framework */,
-				9C2A3523610C77B472A6D3CB /* Pods_iBuyTests.framework */,
+				72CE4498139C45CBE13B0527 /* Pods_PokeAPI.framework */,
+				CA20929AA6358044ECBFA5C1 /* Pods_PokeAPITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EC5FD4A81F1B7A80DB833773 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2C93811C0CAA75646345CEB /* Pods-PokeAPI.debug.xcconfig */,
+				A610132C8CC4CB8207D74987 /* Pods-PokeAPI.release.xcconfig */,
+				785CDAC149232E46A28ABA86 /* Pods-PokeAPITests.debug.xcconfig */,
+				11E76126F392D82B530E77C8 /* Pods-PokeAPITests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B32401C326BA19D800102998 /* iBuy */ = {
+		B32401C326BA19D800102998 /* PokeAPI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B32401EE26BA19DA00102998 /* Build configuration list for PBXNativeTarget "iBuy" */;
+			buildConfigurationList = B32401EE26BA19DA00102998 /* Build configuration list for PBXNativeTarget "PokeAPI" */;
 			buildPhases = (
 				74612F1F0145F737B0DEC1F4 /* [CP] Check Pods Manifest.lock */,
 				B32401C026BA19D800102998 /* Sources */,
@@ -287,14 +281,14 @@
 			);
 			dependencies = (
 			);
-			name = iBuy;
+			name = PokeAPI;
 			productName = iBuy;
-			productReference = B32401C426BA19D800102998 /* iBuy.app */;
+			productReference = B32401C426BA19D800102998 /* PokeAPI.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B32401D926BA19DA00102998 /* iBuyTests */ = {
+		B32401D926BA19DA00102998 /* PokeAPITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B32401F126BA19DA00102998 /* Build configuration list for PBXNativeTarget "iBuyTests" */;
+			buildConfigurationList = B32401F126BA19DA00102998 /* Build configuration list for PBXNativeTarget "PokeAPITests" */;
 			buildPhases = (
 				4754017A8A8BBF3C73E8BDE9 /* [CP] Check Pods Manifest.lock */,
 				B32401D626BA19DA00102998 /* Sources */,
@@ -306,9 +300,9 @@
 			dependencies = (
 				B32401DC26BA19DA00102998 /* PBXTargetDependency */,
 			);
-			name = iBuyTests;
+			name = PokeAPITests;
 			productName = iBuyTests;
-			productReference = B32401DA26BA19DA00102998 /* iBuyTests.xctest */;
+			productReference = B32401DA26BA19DA00102998 /* PokeAPITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -329,7 +323,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B32401BF26BA19D800102998 /* Build configuration list for PBXProject "iBuy" */;
+			buildConfigurationList = B32401BF26BA19D800102998 /* Build configuration list for PBXProject "PokeAPI" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -342,8 +336,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B32401C326BA19D800102998 /* iBuy */,
-				B32401D926BA19DA00102998 /* iBuyTests */,
+				B32401C326BA19D800102998 /* PokeAPI */,
+				B32401D926BA19DA00102998 /* PokeAPITests */,
 			);
 		};
 /* End PBXProject section */
@@ -381,15 +375,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iBuy/Pods-iBuy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-PokeAPI/Pods-PokeAPI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iBuy/Pods-iBuy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-PokeAPI/Pods-PokeAPI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iBuy/Pods-iBuy-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PokeAPI/Pods-PokeAPI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4754017A8A8BBF3C73E8BDE9 /* [CP] Check Pods Manifest.lock */ = {
@@ -407,7 +401,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iBuyTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-PokeAPITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -429,7 +423,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iBuy-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-PokeAPI-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -479,7 +473,7 @@
 /* Begin PBXTargetDependency section */
 		B32401DC26BA19DA00102998 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B32401C326BA19D800102998 /* iBuy */;
+			target = B32401C326BA19D800102998 /* PokeAPI */;
 			targetProxy = B32401DB26BA19DA00102998 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -622,13 +616,13 @@
 		};
 		B32401EF26BA19DA00102998 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB6CCBE2FF0965A8CEE29188 /* Pods-iBuy.debug.xcconfig */;
+			baseConfigurationReference = C2C93811C0CAA75646345CEB /* Pods-PokeAPI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 55A9S3T6KC;
-				INFOPLIST_FILE = iBuy/Resources/Info.plist;
+				INFOPLIST_FILE = PokeAPI/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -642,13 +636,13 @@
 		};
 		B32401F026BA19DA00102998 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4707C4F4AA970C1A11A7C6DE /* Pods-iBuy.release.xcconfig */;
+			baseConfigurationReference = A610132C8CC4CB8207D74987 /* Pods-PokeAPI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 55A9S3T6KC;
-				INFOPLIST_FILE = iBuy/Resources/Info.plist;
+				INFOPLIST_FILE = PokeAPI/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -662,7 +656,7 @@
 		};
 		B32401F226BA19DA00102998 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39211E6270DB417B7045BA74 /* Pods-iBuyTests.debug.xcconfig */;
+			baseConfigurationReference = 785CDAC149232E46A28ABA86 /* Pods-PokeAPITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -685,7 +679,7 @@
 		};
 		B32401F326BA19DA00102998 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF8B8D759BD7BA7DA58A9019 /* Pods-iBuyTests.release.xcconfig */;
+			baseConfigurationReference = 11E76126F392D82B530E77C8 /* Pods-PokeAPITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -709,7 +703,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B32401BF26BA19D800102998 /* Build configuration list for PBXProject "iBuy" */ = {
+		B32401BF26BA19D800102998 /* Build configuration list for PBXProject "PokeAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B32401EC26BA19DA00102998 /* Debug */,
@@ -718,7 +712,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B32401EE26BA19DA00102998 /* Build configuration list for PBXNativeTarget "iBuy" */ = {
+		B32401EE26BA19DA00102998 /* Build configuration list for PBXNativeTarget "PokeAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B32401EF26BA19DA00102998 /* Debug */,
@@ -727,7 +721,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B32401F126BA19DA00102998 /* Build configuration list for PBXNativeTarget "iBuyTests" */ = {
+		B32401F126BA19DA00102998 /* Build configuration list for PBXNativeTarget "PokeAPITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B32401F226BA19DA00102998 /* Debug */,

@@ -9,33 +9,31 @@ import UIKit
 
 struct Constants {
     struct API {
-        static let countriesUrl = "https://api.mercadolibre.com/sites"
-        static func CategoriesAvailable() throws -> String {
-            do {
-                let country = try Storage.shared.getLocalCountry()
-                return "https://api.mercadolibre.com/sites/\(country!.id)/categories"
-            } catch {
-                throw error
-            }
+        static let generations = "https://pokeapi.co/api/v2/generation/"
+        static let pokemonDetail = "https://pokeapi.co/api/v2/pokemon/"
+        static func RandomPokemonList() -> String {
+            let limit = Int.random(in: 0..<1119)
+            let offset = Int.random(in: 0..<1119)
+            return "https://pokeapi.co/api/v2/pokemon?limit=\(limit)&offset=\(offset)"
         }
-        static func ItemInCategoryAvailable(_ category: String) throws -> String {
-            do {
-                let country = try Storage.shared.getLocalCountry()
-                return "https://api.mercadolibre.com/sites/\(country!.id)/search?category=\(category)"
-            } catch {
-                throw error
-            }
-        }
-        static func searchItems(item: String) throws -> String {
-            do {
-                let search = item.replacingOccurrences(of: " ", with: "%20")
-                let country = try Storage.shared.getLocalCountry()
-                return "https://api.mercadolibre.com/sites/\(country!.id)/search?q=\(search)"
-
-            } catch {
-                throw error
-            }
-        }
+//        static func ItemInCategoryAvailable(_ category: String) throws -> String {
+//            do {
+//                let country = try Storage.shared.getLocalCountry()
+//                return "https://api.mercadolibre.com/sites/\(country!.id)/search?category=\(category)"
+//            } catch {
+//                throw error
+//            }
+//        }
+//        static func searchItems(item: String) throws -> String {
+//            do {
+//                let search = item.replacingOccurrences(of: " ", with: "%20")
+//                let country = try Storage.shared.getLocalCountry()
+//                return "https://api.mercadolibre.com/sites/\(country!.id)/search?q=\(search)"
+//
+//            } catch {
+//                throw error
+//            }
+//        }
     }
     
     struct CellIdentifier {
@@ -45,7 +43,7 @@ struct Constants {
     }
     
     struct SBIdentifier {
-        static let dashboard = "Dashboard"
+        static let generations = "Generations"
         static let selectCountry = "SelectCountry"
     }
     
@@ -62,4 +60,3 @@ struct Constants {
     }
 }
 
-// Link: https://developers.mercadolibre.com.ar/es_ar/categorias-y-publicaciones#close

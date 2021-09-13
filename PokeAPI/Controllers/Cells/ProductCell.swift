@@ -19,16 +19,8 @@ class ProductCell: UICollectionViewCell {
     func setup(productTitle: String, productPrice: Double, productImageUrl: String, oldPrice: Double) {
         self.viewHeight.constant = self.layer.bounds.height / 3
         self.productTitle.text = productTitle
-        self.productPrice.text = "$ \(checkDouble(productPrice))"
         self.productImage.download(from: productImageUrl)
         self.discountIcon.isHidden = !(productPrice < oldPrice)
-    }
-   
-    func checkDouble(_ price: Double) -> String {
-        if (floor(price) == price) {
-            return String(price.formattedWithSeparator)
-        }
-        return String(price)
     }
     
     override var isSelected: Bool {

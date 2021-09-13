@@ -18,23 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let winScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: winScene)
-        if let _ = try! Storage.shared.getLocalCountry()  {
-            guard let rootVC = UIStoryboard
-                    .init(name: Constants.SBIdentifier.dashboard, bundle: nil)
-                    .instantiateViewController(identifier: Constants.SBIdentifier.dashboard) as? DashboardVC else {return}
+        guard let rootVC = UIStoryboard
+                .init(name: Constants.SBIdentifier.generations, bundle: nil)
+                .instantiateViewController(identifier: Constants.SBIdentifier.generations) as? GenerationsVC else {return}
 
-            let rootNC = UINavigationController(rootViewController: rootVC)
-            self.window?.rootViewController = rootNC
-            self.window?.makeKeyAndVisible()
-        } else {
-            guard let rootVC = UIStoryboard
-                    .init(name: Constants.SBIdentifier.selectCountry, bundle: nil)
-                    .instantiateViewController(identifier: Constants.SBIdentifier.selectCountry) as? SelectCountryVC else {return}
-
-            let rootNC = UINavigationController(rootViewController: rootVC)
-            self.window?.rootViewController = rootNC
-            self.window?.makeKeyAndVisible()
-        }
+        let rootNC = UINavigationController(rootViewController: rootVC)
+        self.window?.rootViewController = rootNC
+        self.window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

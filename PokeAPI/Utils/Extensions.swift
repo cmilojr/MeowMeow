@@ -27,18 +27,3 @@ extension UIImageView {
         download(from: url, contentMode: mode)
     }
 }
-
-extension Formatter {
-    static let withThousandSeparator: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.groupingSeparator = "."
-        return formatter
-    }()
-}
-
-extension Numeric {
-    var formattedWithSeparator: String {
-        Formatter.withThousandSeparator.string(for: self) ?? ""
-    }
-}

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class DetailItemVC: UIViewController {
     @IBOutlet weak var titleOfProduct: UILabel!
@@ -18,7 +19,9 @@ class DetailItemVC: UIViewController {
     @IBOutlet weak var mercadoPagoAccepted: UILabel!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var discountStack: UIStackView!
-    var product: ProductResponse?
+    private let detailItemVM = DetailItemVM()
+    private var pokemonInfo: PokemonDetailModel?
+    var pokemonName: String?
     
     fileprivate func strikethroughLabel(oldPrice: String) -> NSMutableAttributedString {
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldPrice)
@@ -26,48 +29,41 @@ class DetailItemVC: UIViewController {
         return attributeString
     }
     
-    fileprivate func setupDetail(_ product: ProductResponse) {
-        self.titleOfProduct.text = product.title
-        if let oldPrice = product.original_price {
-            let discount = calculateDiscount(oldPrice: Int(oldPrice), newPrice: Int(product.price!))
-            if discount <= 0 {
-                self.oldPriceProduct.isHidden = true
-                self.discountStack.isHidden = true
-
-            }
-            self.oldPriceProduct.attributedText = strikethroughLabel(oldPrice: "$ \(oldPrice.formattedWithSeparator)")
-
-            self.discountProduct.text = "\(discount)% OFF"
-        } else {
-            self.oldPriceProduct.isHidden = true
-            self.discountStack.isHidden = true
-        }
-        self.newPriceProduct.text = "$ \(String(describing: checkDouble(product.price!)))"
-        self.productImage.download(from: product.thumbnail!)
+    fileprivate func setupDetail(_ pokemon: PokemonDetailModel) {
+        self.titleOfProduct.text = pokemon.name
+        self.productImage.download(from: (pokemon.sprites.front_default))
         // TODO - Que hacer si no llega imagen
-        self.feeProduct.text = "Págalo a 36 Cuotas de $ \((product.price!/36).formattedWithSeparator)."
-        self.mercadoPagoAccepted.text = product.accepts_mercadopago! ? "Este producto acepta mercado pago!." : "Este producto no acepta mercado pago."
-        self.shipping.text = product.shipping.free_shipping! ? "Envio gratuito!." : "Envio por calcular."
-        self.productCondition.text = product.condition! == "new" ? "Nuevo." : "Usado."
-    }
-    
-    private func calculateDiscount(oldPrice: Int, newPrice: Int) -> Int {
-        return (oldPrice * 100)/newPrice - 100
-    }
-    
-    func checkDouble(_ price: Double) -> String {
-        if (floor(price) == price) {
-            return String(price.formattedWithSeparator)
-        }
-        return String(price)
-    }
 
+        //self.mercadoPagoAccepted.text = product.accepts_mercadopago! ? "Este producto acepta mercado pago!." : "Este producto no acepta mercado pago."
+        //self.shipping.text = product.shipping.free_shipping! ? "Envio gratuito!." : "Envio por calcular."
+        //self.productCondition.text = product.condition! == "new" ? "Nuevo." : "Usado."
+    }
+    
+    private func setupPokemonDetail(name: String) {
+        detailItemVM.getPokemonDetail(name: name) { pokemonRes, error in
+            if let e = error {
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+            } else if let pokemonInfo = pokemonRes {
+                DispatchQueue.main.async {
+                    self.setupDetail(pokemonInfo)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Detalle del producto"
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        setupDetail(product!)
+        if let pn = pokemonName {
+            self.setupPokemonDetail(name: pn)
+        } else {
+            let banner = NotificationBanner(title: "Error", subtitle: "No pokemon selected", style: .danger)
+            DispatchQueue.main.async {
+                banner.show()
+            }
+        }
     }
 }

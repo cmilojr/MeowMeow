@@ -16,9 +16,21 @@ class DetailItemVC: UIViewController {
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     private let detailItemVM = DetailItemVM()
     private var pokemonInfo: PokemonDetailModel?
     var pokemonName: Description?
+    private var isFavorite: Bool! {
+        didSet {
+            if let fav = isFavorite {
+                if fav {
+                    self.favoriteButton.setImage(UIImage(named: "HeartFill"), for: .normal)
+                } else {
+                    self.favoriteButton.setImage(UIImage(named: "HeartNotFill"), for: .normal)
+                }
+            }
+        }
+    }
     
     fileprivate func strikethroughLabel(oldPrice: String) -> NSMutableAttributedString {
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldPrice)
@@ -33,7 +45,7 @@ class DetailItemVC: UIViewController {
         self.pokemonIdLabel.text = "# \(pokemon.id)"
         self.weightLabel.text = "\(pokemon.weight) Lbs"
         self.heightLabel.text =
-        "\(pokemon.height) Feet"
+            "\(pokemon.height) Feet"
         let first = pokemon.moves.count - 5
         let total = first > 0 ? 5 : first != -5 ? first * -1 : 0
         for i in 0..<total {
@@ -68,31 +80,51 @@ class DetailItemVC: UIViewController {
     }
     
     @IBAction func savePokemon(_ sender: Any) {
+        if !isFavorite {
+            do {
+                try detailItemVM.savePokemonDetail(self.pokemonName!)
+                self.isFavorite = !self.isFavorite
+            } catch {
+                print(error)
+                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+            }
+        } else {
+            do {
+                try detailItemVM.deletePokemon(self.pokemonName!)
+                self.isFavorite = !self.isFavorite
+            } catch {
+                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    banner.show()
+                }
+            }
+        }
+    }
+    fileprivate func checkIsFavorite(_ pn: Description) {
         do {
-            try detailItemVM.savePokemonDetail(self.pokemonName!)
-            //let res = try detailItemVM.getListOfFavoritePokemons()
-            //print(res)
+            self.isFavorite = try self.detailItemVM.checkPokemon(pn)
         } catch {
-            print(error)
             let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
             DispatchQueue.main.async {
                 banner.show()
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Pokemon information"
         if let pn = pokemonName {
             self.setupPokemonDetail(name: pn.name)
-            self.detailItemVM.checkPokemon(pn)
+            self.checkIsFavorite(pn)
         } else {
             let banner = NotificationBanner(title: "Error", subtitle: "No pokemon selected", style: .danger)
             DispatchQueue.main.async {
                 banner.show()
             }
         }
-        
-        
     }
 }

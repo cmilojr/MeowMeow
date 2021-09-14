@@ -217,6 +217,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="favoriteButton" destination="1JT-BT-tD3" id="iWI-7R-5Hg"/>
                         <outlet property="heightLabel" destination="ZVP-ww-HAd" id="evO-E1-YBL"/>
                         <outlet property="movesLabel" destination="3kq-zY-0PY" id="qjP-nO-dyT"/>
                         <outlet property="pokemonIdLabel" destination="tLJ-i7-4gv" id="cfB-eQ-5Nf"/>

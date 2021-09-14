@@ -10,12 +10,12 @@ import NotificationBannerSwift
 
 class DetailItemVC: UIViewController {
     @IBOutlet weak var pokemonNameLabel: UILabel!
-    @IBOutlet weak var oldPriceProduct: UILabel!
-    @IBOutlet weak var newPriceProduct: UILabel!
-    @IBOutlet weak var feeProduct: UILabel!
-    @IBOutlet weak var shipping: UILabel!
-    @IBOutlet weak var mercadoPagoAccepted: UILabel!
+    @IBOutlet weak var pokemonIdLabel: UILabel!
+    @IBOutlet weak var movesLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var productImage: UIImageView!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
     private let detailItemVM = DetailItemVM()
     private var pokemonInfo: PokemonDetailModel?
     var pokemonName: String?
@@ -27,12 +27,30 @@ class DetailItemVC: UIViewController {
     }
     
     fileprivate func setupDetail(_ pokemon: PokemonDetailModel) {
+        var moves = ""
         self.pokemonNameLabel.text = pokemon.name.capitalizingFirstLetter()
         self.productImage.download(from: (pokemon.sprites.front_default))
-
-        //self.mercadoPagoAccepted.text = product.accepts_mercadopago! ? "Este producto acepta mercado pago!." : "Este producto no acepta mercado pago."
-        //self.shipping.text = product.shipping.free_shipping! ? "Envio gratuito!." : "Envio por calcular."
-        //self.productCondition.text = product.condition! == "new" ? "Nuevo." : "Usado."
+        self.pokemonIdLabel.text = "# \(pokemon.id)"
+        self.weightLabel.text = "\(pokemon.weight) Lbs"
+        self.heightLabel.text =
+        "\(pokemon.height) Feet"
+        let first = pokemon.moves.count - 5
+        let total = first > 0 ? 5 : first != -5 ? first * -1 : 0
+        for i in 1..<total {
+            print(i)
+            let move = pokemon
+                .moves[i]
+                .move
+                .name
+                .capitalizingFirstLetter()
+                .replacingOccurrences(of: "-", with: " ")
+            if i == 1 {
+                moves += move
+            } else {
+                moves += ", \(move)"
+            }
+        }
+        self.movesLabel.text = moves
     }
     
     private func setupPokemonDetail(name: String) {

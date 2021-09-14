@@ -14,7 +14,7 @@ class CategoryCell: UICollectionViewCell {
     
     func setup(titleCategory: String) {
         self.titleHeight.constant = container.layer.bounds.height - 20
-        self.title.text = titleCategory.capitalizingFirstLetter()
+        self.title.text = titleCategory.capitalizingFirstLetter().replacingOccurrences(of: "-", with: " ")
     }
  
     override var isSelected: Bool {

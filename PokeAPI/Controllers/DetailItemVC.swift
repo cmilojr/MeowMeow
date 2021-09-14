@@ -9,16 +9,13 @@ import UIKit
 import NotificationBannerSwift
 
 class DetailItemVC: UIViewController {
-    @IBOutlet weak var titleOfProduct: UILabel!
+    @IBOutlet weak var pokemonNameLabel: UILabel!
     @IBOutlet weak var oldPriceProduct: UILabel!
     @IBOutlet weak var newPriceProduct: UILabel!
-    @IBOutlet weak var discountProduct: UILabel!
     @IBOutlet weak var feeProduct: UILabel!
-    @IBOutlet weak var productCondition: UILabel!
     @IBOutlet weak var shipping: UILabel!
     @IBOutlet weak var mercadoPagoAccepted: UILabel!
     @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var discountStack: UIStackView!
     private let detailItemVM = DetailItemVM()
     private var pokemonInfo: PokemonDetailModel?
     var pokemonName: String?
@@ -30,9 +27,8 @@ class DetailItemVC: UIViewController {
     }
     
     fileprivate func setupDetail(_ pokemon: PokemonDetailModel) {
-        self.titleOfProduct.text = pokemon.name
+        self.pokemonNameLabel.text = pokemon.name.capitalizingFirstLetter()
         self.productImage.download(from: (pokemon.sprites.front_default))
-        // TODO - Que hacer si no llega imagen
 
         //self.mercadoPagoAccepted.text = product.accepts_mercadopago! ? "Este producto acepta mercado pago!." : "Este producto no acepta mercado pago."
         //self.shipping.text = product.shipping.free_shipping! ? "Envio gratuito!." : "Envio por calcular."
@@ -56,7 +52,7 @@ class DetailItemVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Detalle del producto"
+        self.navigationItem.title = "Pokemon information"
         if let pn = pokemonName {
             self.setupPokemonDetail(name: pn)
         } else {

@@ -9,14 +9,4 @@ import Foundation
 
 struct SearchVM {
     
-    func getPokemonDetail(name: String, completion: @escaping (PokemonDetailModel?, Error?) -> Void) {
-        Networking.shared.get(URL(string: Constants.API.pokemonDetail+name)!) { (res: PokemonDetailModel?, error: Error?) in
-                if let err = error {
-                    print(err.localizedDescription)
-                    completion(nil, err)
-                } else if let pokemon = res {
-                    completion(pokemon, nil)
-                }
-            }
-        }
 }

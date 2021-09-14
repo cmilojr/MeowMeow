@@ -44,16 +44,11 @@ struct Constants {
     
     struct SBIdentifier {
         static let generations = "Generations"
-        static let selectCountry = "SelectCountry"
     }
-    
-    struct LocalStorageKey {
-        static let userCountry = "userCountry"
-    }
-    
+
     struct CustomColors {
         static let mintGreen = UIColor(named: "MintGreen")
-        static let green = UIColor(named: "Green")
+        static let red = UIColor(named: "Red")
         static let orange = UIColor(named: "Orange")
         static let softPurple = UIColor(named: "SoftPurple")
         static let softGray = UIColor(named: "SoftGray")

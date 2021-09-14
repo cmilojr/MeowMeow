@@ -78,7 +78,7 @@ class SearchVC: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = Constants.CustomColors.green
+        appearance.backgroundColor = Constants.CustomColors.red
         appearance.titleTextAttributes = [.foregroundColor: Constants.CustomColors.mintGreen!]
         appearance.largeTitleTextAttributes = [.foregroundColor: Constants.CustomColors.mintGreen!]
         self.navigationController?.navigationBar.tintColor = Constants.CustomColors.mintGreen

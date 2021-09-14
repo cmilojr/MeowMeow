@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -10,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Buscar-->
+        <!--Search-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="SearchVC" customModule="PokeAPI" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +107,7 @@
                             <constraint firstItem="Yk7-WA-4JD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="yvG-ZL-oba"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Buscar" id="wh2-0r-ajV"/>
+                    <navigationItem key="navigationItem" title="Search" id="wh2-0r-ajV"/>
                     <connections>
                         <outlet property="blockBackground" destination="ZtO-su-s3a" id="jmn-0G-W8G"/>
                         <outlet property="emptyState" destination="tCE-51-WaF" id="XTi-Qc-mPJ"/>

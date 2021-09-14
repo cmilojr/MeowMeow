@@ -45,6 +45,9 @@
                                                         <integer key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="favoritePokemonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="q6H-bs-CCX"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="tintColor" name="SoftOrange"/>

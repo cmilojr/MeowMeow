@@ -19,7 +19,7 @@ struct GenerationsVM {
         }
     }
     
-func getPokemonAvailableInGeneration(generationUrl: String, completion: @escaping (PokemonGeneration?, Error?) -> Void) {
+    func getPokemonAvailableInGeneration(generationUrl: String, completion: @escaping (PokemonGeneration?, Error?) -> Void) {
         Networking.shared.get(URL(string: generationUrl)!) { (res: PokemonGeneration?, error: Error?) in
             if let err = error {
                 print(err.localizedDescription)
@@ -27,6 +27,14 @@ func getPokemonAvailableInGeneration(generationUrl: String, completion: @escapin
             } else if let pokemons = res {
                 completion(pokemons, nil)
             }
+        }
+    }
+    
+    func getListOfFavoritePokemons() throws -> [Description] {
+        do {
+            return try Storage.shared.getPokemons()
+        } catch {
+            throw error
         }
     }
 }

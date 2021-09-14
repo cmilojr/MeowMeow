@@ -22,7 +22,12 @@ struct Storage {
             let fileUrl = documentDirectory.appendingPathComponent("FavoritePokemons").appendingPathExtension("sqlite3")
             let db = try Connection(fileUrl.path)
             self.database = db
-            //try self.createTable()
+        } catch {
+            print(error)
+        }
+        
+        do {
+            try self.createTable()
         } catch {
             print(error)
         }

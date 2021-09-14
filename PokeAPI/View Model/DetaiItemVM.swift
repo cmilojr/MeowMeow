@@ -27,15 +27,7 @@ struct DetailItemVM {
             throw error
         }
     }
-    
-    func getListOfFavoritePokemons() throws -> [Description] {
-        do {
-            return try Storage.shared.getPokemons()
-        } catch {
-            throw error
-        }
-    }
-    
+        
     func checkPokemon(_ info: Description) throws -> Bool {
         do {
             return try Storage.shared.checkPokemon(name: info.name)

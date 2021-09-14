@@ -40,7 +40,15 @@ class GenerationsVC: UIViewController {
     }
     
     @IBAction func favoritePokemonAction(_ sender: Any) {
-        print("Presionado **** ")
+        do {
+            self.pokemonsInGeneration = try generationsViewModel.getListOfFavoritePokemons()
+            self.performSegue(withIdentifier: "goToSearch", sender: nil)
+        } catch {
+            let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+            DispatchQueue.main.async {
+                banner.show()
+            }
+        }
     }
     @IBAction func searchButtonAction(_ sender: UIButton) {
         self.pokemonsInGeneration = nil

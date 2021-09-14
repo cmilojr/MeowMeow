@@ -36,15 +36,14 @@ class DetailItemVC: UIViewController {
         "\(pokemon.height) Feet"
         let first = pokemon.moves.count - 5
         let total = first > 0 ? 5 : first != -5 ? first * -1 : 0
-        for i in 1..<total {
-            print(i)
+        for i in 0..<total {
             let move = pokemon
                 .moves[i]
                 .move
                 .name
                 .capitalizingFirstLetter()
                 .replacingOccurrences(of: "-", with: " ")
-            if i == 1 {
+            if i == 0 {
                 moves += move
             } else {
                 moves += ", \(move)"
@@ -68,16 +67,32 @@ class DetailItemVC: UIViewController {
         }
     }
     
+    @IBAction func savePokemon(_ sender: Any) {
+        do {
+            try detailItemVM.savePokemonDetail(self.pokemonName!)
+            //let res = try detailItemVM.getListOfFavoritePokemons()
+            //print(res)
+        } catch {
+            print(error)
+            let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+            DispatchQueue.main.async {
+                banner.show()
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Pokemon information"
         if let pn = pokemonName {
             self.setupPokemonDetail(name: pn.name)
+            self.detailItemVM.checkPokemon(pn)
         } else {
             let banner = NotificationBanner(title: "Error", subtitle: "No pokemon selected", style: .danger)
             DispatchQueue.main.async {
                 banner.show()
             }
         }
+        
+        
     }
 }

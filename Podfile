@@ -6,7 +6,8 @@ target 'PokeAPI' do
   use_frameworks!
 
   pod 'NotificationBannerSwift', '~> 3.0.0'
-
+  pod 'SQLite.swift', '~> 0.13.0'
+  
   target 'PokeAPITests' do
     inherit! :search_paths
     # Pods for testing

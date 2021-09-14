@@ -13,6 +13,7 @@ class GenerationsVC: UIViewController {
     @IBOutlet weak var emptyState: UIView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var blockBackground: UIView!
+    @IBOutlet weak var favoritePokemons: UIButton!
     
     fileprivate var generationsViewModel = GenerationsVM()
     fileprivate var generations = [Description]()
@@ -38,6 +39,9 @@ class GenerationsVC: UIViewController {
         }
     }
     
+    @IBAction func favoritePokemonAction(_ sender: Any) {
+        print("Presionado **** ")
+    }
     @IBAction func searchButtonAction(_ sender: UIButton) {
         self.pokemonsInGeneration = nil
         self.performSegue(withIdentifier: "goToSearch", sender: nil)

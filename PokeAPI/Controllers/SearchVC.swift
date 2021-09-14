@@ -16,7 +16,7 @@ class SearchVC: UIViewController {
     let searchMV = SearchVM()
     var pokemonList: [Description]?
     var filteredPokemonList: [Description]?
-    fileprivate var selectedPokemon: String? = nil
+    fileprivate var selectedPokemon: Description? = nil
     let searchController = UISearchController(searchResultsController: nil)
     
     private func reloadData() {
@@ -166,7 +166,7 @@ extension SearchVC: UISearchControllerDelegate, UISearchBarDelegate {
 
 extension SearchVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedPokemon = self.filteredPokemonList![indexPath.row].name
+        self.selectedPokemon = self.filteredPokemonList![indexPath.row]
         self.itemsContainerView.deselectItem(at: indexPath, animated: false)
         self.performSegue(withIdentifier: "goToDetail", sender: nil)
     }

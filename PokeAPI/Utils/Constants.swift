@@ -16,14 +16,6 @@ struct Constants {
             let offset = Int.random(in: 0..<1119)
             return "https://pokeapi.co/api/v2/pokemon?limit=\(limit)&offset=\(offset)"
         }
-//        static func ItemInCategoryAvailable(_ category: String) throws -> String {
-//            do {
-//                let country = try Storage.shared.getLocalCountry()
-//                return "https://api.mercadolibre.com/sites/\(country!.id)/search?category=\(category)"
-//            } catch {
-//                throw error
-//            }
-//        }
 //        static func searchItems(item: String) throws -> String {
 //            do {
 //                let search = item.replacingOccurrences(of: " ", with: "%20")
@@ -38,8 +30,6 @@ struct Constants {
     
     struct CellIdentifier {
         static let categoryCell = "CategoryCell"
-        static let countryCell = "CountryCell"
-        static let productCell = "ProductCell"
     }
     
     struct SBIdentifier {
@@ -49,9 +39,7 @@ struct Constants {
     struct CustomColors {
         static let mintGreen = UIColor(named: "MintGreen")
         static let red = UIColor(named: "Red")
-        static let orange = UIColor(named: "Orange")
         static let softPurple = UIColor(named: "SoftPurple")
-        static let softGray = UIColor(named: "SoftGray")
     }
 }
 

@@ -18,7 +18,7 @@ class DetailItemVC: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     private let detailItemVM = DetailItemVM()
     private var pokemonInfo: PokemonDetailModel?
-    var pokemonName: String?
+    var pokemonName: Description?
     
     fileprivate func strikethroughLabel(oldPrice: String) -> NSMutableAttributedString {
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldPrice)
@@ -72,7 +72,7 @@ class DetailItemVC: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Pokemon information"
         if let pn = pokemonName {
-            self.setupPokemonDetail(name: pn)
+            self.setupPokemonDetail(name: pn.name)
         } else {
             let banner = NotificationBanner(title: "Error", subtitle: "No pokemon selected", style: .danger)
             DispatchQueue.main.async {

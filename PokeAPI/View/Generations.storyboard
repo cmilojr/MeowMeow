@@ -19,6 +19,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LtM-4k-ejY">
+                                <rect key="frame" x="20" y="220" width="374" height="112"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yz5-bv-Z3w">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="48"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bdp-II-1Bw">
+                                                <rect key="frame" x="0.0" y="5.5" width="40" height="37.5"/>
+                                                <color key="tintColor" name="Green"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="HgH-kG-f2O"/>
+                                                    <constraint firstAttribute="height" constant="40" id="nCz-zn-QmG"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O1E-Lb-rm9">
+                                                <rect key="frame" x="60" y="0.0" width="314" height="48"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="23"/>
+                                                <state key="normal" title="Favorite Pokemons">
+                                                    <color key="titleColor" systemColor="systemGray2Color"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="tintColor" name="SoftOrange"/>
+                                        <constraints>
+                                            <constraint firstItem="bdp-II-1Bw" firstAttribute="height" secondItem="O1E-Lb-rm9" secondAttribute="height" multiplier="0.833333" id="KbG-CX-up9"/>
+                                            <constraint firstAttribute="bottom" secondItem="O1E-Lb-rm9" secondAttribute="bottom" id="kfi-ts-DCM"/>
+                                            <constraint firstItem="O1E-Lb-rm9" firstAttribute="top" secondItem="yz5-bv-Z3w" secondAttribute="top" id="uoS-gQ-QPu"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cKd-aM-omD">
+                                        <rect key="frame" x="0.0" y="68" width="374" height="44"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shuffle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Rxv-Kz-Bpk">
+                                                <rect key="frame" x="0.0" y="3.5" width="40" height="37.5"/>
+                                                <color key="tintColor" name="Green"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="RmD-sF-Wd3"/>
+                                                    <constraint firstAttribute="height" constant="40" id="fiG-jb-Vc1"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f64-EM-tU7">
+                                                <rect key="frame" x="60" y="0.0" width="314" height="44"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="23"/>
+                                                <state key="normal" title="Random Pokemons">
+                                                    <color key="titleColor" systemColor="systemGray2Color"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="tintColor" name="SoftOrange"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="f64-EM-tU7" secondAttribute="bottom" id="3tC-Qd-OzK"/>
+                                            <constraint firstItem="Rxv-Kz-Bpk" firstAttribute="height" secondItem="f64-EM-tU7" secondAttribute="height" multiplier="0.909091" id="Jfg-Ft-JGB"/>
+                                            <constraint firstItem="f64-EM-tU7" firstAttribute="top" secondItem="cKd-aM-omD" secondAttribute="top" id="p7A-LN-miJ"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cKd-aM-omD" secondAttribute="trailing" id="FNd-8h-FAi"/>
+                                    <constraint firstAttribute="trailing" secondItem="yz5-bv-Z3w" secondAttribute="trailing" id="grE-56-TYq"/>
+                                </constraints>
+                            </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokeApi" translatesAutoresizingMaskIntoConstraints="NO" id="5ub-RK-HCo">
                                 <rect key="frame" x="20" y="80" width="374" height="100"/>
                                 <constraints>
@@ -26,7 +99,7 @@
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lDE-sn-LYL">
-                                <rect key="frame" x="20" y="269" width="374" height="593"/>
+                                <rect key="frame" x="20" y="421" width="374" height="441"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jX2-am-YfR">
                                     <size key="itemSize" width="128" height="128"/>
@@ -64,13 +137,16 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na4-GW-07d">
-                                <rect key="frame" x="20" y="200" width="175.5" height="49"/>
+                                <rect key="frame" x="20" y="352" width="175.5" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="xTl-Qg-Kw6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" id="zuU-B5-gKt">
-                                <rect key="frame" x="0.0" y="269" width="414" height="628"/>
+                                <rect key="frame" x="0.0" y="421" width="414" height="476"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9OS-gA-Lmo">
@@ -114,17 +190,20 @@
                             <constraint firstAttribute="bottom" secondItem="K4U-tj-Fdh" secondAttribute="bottom" id="1Zk-KA-hPu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lDE-sn-LYL" secondAttribute="trailing" constant="20" id="5b6-gA-dkN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5ub-RK-HCo" secondAttribute="trailing" constant="20" id="8d3-3n-qtm"/>
-                            <constraint firstItem="Na4-GW-07d" firstAttribute="top" secondItem="5ub-RK-HCo" secondAttribute="bottom" constant="20" id="JMY-vW-sJI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LtM-4k-ejY" secondAttribute="trailing" constant="20" id="KdM-xr-6PB"/>
                             <constraint firstItem="Na4-GW-07d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Svu-0Z-xNL"/>
                             <constraint firstItem="5ub-RK-HCo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="V9n-tO-TSZ"/>
+                            <constraint firstItem="LtM-4k-ejY" firstAttribute="top" secondItem="5ub-RK-HCo" secondAttribute="bottom" constant="40" id="Ypx-6r-4HN"/>
                             <constraint firstItem="K4U-tj-Fdh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YzJ-eO-CbC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5ub-RK-HCo" secondAttribute="trailing" constant="20" id="a0G-9u-JHZ"/>
                             <constraint firstItem="K4U-tj-Fdh" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="fhD-bP-z37"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="lDE-sn-LYL" secondAttribute="bottom" id="fmV-Vh-y6L"/>
                             <constraint firstItem="5ub-RK-HCo" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="80" id="hNn-RA-T1g"/>
                             <constraint firstItem="5ub-RK-HCo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="jkZ-bh-DyQ"/>
-                            <constraint firstItem="zuU-B5-gKt" firstAttribute="top" secondItem="Na4-GW-07d" secondAttribute="bottom" constant="20" id="lIT-XD-RaF"/>
-                            <constraint firstItem="lDE-sn-LYL" firstAttribute="top" secondItem="Na4-GW-07d" secondAttribute="bottom" constant="20" id="nLR-2p-0Rc"/>
+                            <constraint firstItem="lDE-sn-LYL" firstAttribute="top" secondItem="Na4-GW-07d" secondAttribute="bottom" constant="20" id="la5-Bs-9g6"/>
+                            <constraint firstItem="LtM-4k-ejY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="mQu-3R-cXx"/>
+                            <constraint firstItem="zuU-B5-gKt" firstAttribute="top" secondItem="Na4-GW-07d" secondAttribute="bottom" constant="20" id="qwg-8y-jRP"/>
+                            <constraint firstItem="Na4-GW-07d" firstAttribute="top" secondItem="LtM-4k-ejY" secondAttribute="bottom" constant="20" id="vrQ-KN-lnR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4CI-fF-JIP"/>
@@ -132,6 +211,7 @@
                         <outlet property="blockBackground" destination="K4U-tj-Fdh" id="Icy-dz-jlS"/>
                         <outlet property="categoriesCollectionView" destination="lDE-sn-LYL" id="tun-20-oLs"/>
                         <outlet property="emptyState" destination="zuU-B5-gKt" id="wOM-df-cGY"/>
+                        <outlet property="favoritePokemons" destination="O1E-Lb-rm9" id="12Q-tD-B7A"/>
                         <outlet property="loadingSpinner" destination="C53-Am-ocg" id="3iS-RX-9Bl"/>
                         <segue destination="ZMf-dI-ZGQ" kind="show" identifier="goToSearch" id="D0K-16-8El"/>
                     </connections>
@@ -172,12 +252,17 @@
     </scenes>
     <resources>
         <image name="EmptyCategory" width="296" height="264"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="pokeApi" width="85.5" height="34"/>
+        <image name="shuffle" catalog="system" width="128" height="93"/>
         <namedColor name="Green">
             <color red="0.4309999942779541" green="0.83099997043609619" blue="0.54500001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Purple">
             <color red="0.83099997043609619" green="0.47499999403953552" blue="0.83099997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SoftOrange">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

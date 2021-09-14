@@ -56,7 +56,9 @@ class GenerationsVC: UIViewController {
                 }
             } else if let generations = generationsRes {
                 self.generations = generations.results
-                self.categoriesCollectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.categoriesCollectionView.reloadData()
+                }
             }
         }
     }
@@ -118,9 +120,12 @@ extension GenerationsVC: UICollectionViewDelegate {
             } else if let items = itemsRes {
                 self.pokemonsInGeneration = items.pokemon_species
             }
-            self.loading(show: false)
-            self.categoriesCollectionView.deselectItem(at: indexPath, animated: false)
-            self.performSegue(withIdentifier: "goToSearch", sender: nil)
+            DispatchQueue.main.async {
+                self.loading(show: false)
+                self.categoriesCollectionView.deselectItem(at: indexPath, animated: false)
+                self.performSegue(withIdentifier: "goToSearch", sender: nil)
+
+            }
         }
     }
 }

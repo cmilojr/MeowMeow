@@ -16,16 +16,6 @@ struct Constants {
             let offset = Int.random(in: 0..<1119)
             return "https://pokeapi.co/api/v2/pokemon?limit=\(limit)&offset=\(offset)"
         }
-//        static func searchItems(item: String) throws -> String {
-//            do {
-//                let search = item.replacingOccurrences(of: " ", with: "%20")
-//                let country = try Storage.shared.getLocalCountry()
-//                return "https://api.mercadolibre.com/sites/\(country!.id)/search?q=\(search)"
-//
-//            } catch {
-//                throw error
-//            }
-//        }
     }
     
     struct CellIdentifier {

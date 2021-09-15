@@ -15,17 +15,17 @@ struct PokemonDetailModel: Decodable {
     let moves: [Move]
     let sprites: Sprites
     let types: [Types]
-}
+    
+    struct Move: Decodable {
+        let move: Description
+    }
 
-struct Move: Decodable {
-    let move: Description
-}
 
+    struct Sprites: Decodable {
+        let front_default: String
+    }
 
-struct Sprites: Decodable {
-    let front_default: String
-}
-
-struct Types: Decodable {
-    let type: Description
+    struct Types: Decodable {
+        let type: Description
+    }
 }

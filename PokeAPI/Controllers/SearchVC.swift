@@ -13,12 +13,12 @@ class SearchVC: UIViewController {
     @IBOutlet weak var emptyState: UIView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var blockBackground: UIView!
-    let searchMV = SearchVM()
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+    fileprivate var selectedPokemon: Description? = nil
     var pokemonList: [Description]?
     var filteredPokemonList: [Description]?
-    fileprivate var selectedPokemon: Description? = nil
-    let searchController = UISearchController(searchResultsController: nil)
     var goToFav: Bool!
+    
     private func reloadData() {
         self.filteredPokemonList = self.pokemonList
         self.itemsContainerView.reloadData()

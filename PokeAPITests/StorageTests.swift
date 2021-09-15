@@ -1,21 +1,40 @@
 //
 //  StorageTests.swift
-//  iBuyTests
+//  PokeAPITests
 //
-//  Created by Camilo Jimenez on 17/08/21.
+//  Created by Camilo Jimenez on 14/09/21.
 //
-@testable import iBuy
+@testable import PokeAPI
 import XCTest
 
 class StorageTests: XCTestCase {
-    var storage = Storage.shared
+    let storage = Storage.shared
     
-    func testSetLocalCountryError() throws {
-        let country = CountryModel(default_currency_id: "1234", id: "1234", name: "Colombia")
-        XCTAssertNoThrow(try storage.setLocalCountry(country))
+    func testGetPokemonsTest() throws {
+        do {
+            let res = try storage.getPokemons()
+            XCTAssert(res.count > 0)
+        } catch {
+            XCTFail()
+        }
     }
     
-    func testGetLocalCountryError() throws {
-        XCTAssertNoThrow(try storage.getLocalCountry())
+    func testCheckPokemonTest() throws {
+        do {
+            let res = try storage.checkPokemon(name: "papita")
+            XCTAssertFalse(res)
+        } catch {
+            XCTFail()
+        }
+    }
+    
+    func testPutPokemonTest() throws {
+        let pokemon = Description(name: "Pikachuu", url: "www.pikachu.com")
+        XCTAssertNoThrow(try storage.putPokemon(pokemonDescription: pokemon))
+    }
+    
+    func testDeletePokemonPokemonTest() throws {
+        let pokemon = Description(name: "Pikachuu", url: "www.pikachu.com")
+        XCTAssertNoThrow(try storage.deletePokemon(name: pokemon.name))
     }
 }

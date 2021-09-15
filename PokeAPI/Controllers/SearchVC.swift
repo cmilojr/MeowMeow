@@ -93,7 +93,7 @@ class SearchVC: UIViewController {
         searchController.searchBar.delegate = self
         searchController.searchBar.barTintColor = .white
         searchController.searchBar.inputView?.backgroundColor = .white
-        searchController.searchBar.placeholder = "Ej: Bolso, Zapatos"
+        searchController.searchBar.placeholder = "Pikachu, Rattata..."
         searchController.searchBar.tintColor = .white
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = true
@@ -130,7 +130,6 @@ extension SearchVC: UICollectionViewDataSource {
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.categoryCell, for: indexPath) as! CategoryCell
-        //cell.setup(productTitle: pokemonList?[indexPath.row].name ?? "", productPrice: 0, productImageUrl: "", oldPrice: 0)
         cell.setup(titleCategory: self.filteredPokemonList?[indexPath.row].name ?? "")
         return cell
     }

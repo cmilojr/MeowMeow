@@ -53,17 +53,40 @@ class GenerationsVC: UIViewController {
         }
     }
     
+    @IBAction func randomPokemonAction(_ sender: Any) {
+        self.loading(show: true)
+        generationsViewModel.getRandomPokemonAvailable { generationsRes, error in
+            if let e = error {
+                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                DispatchQueue.main.async {
+                    self.loading(show: false)
+                    banner.show()
+                }
+            } else if let generations = generationsRes {
+                self.pokemonsInGeneration = generations.results
+                DispatchQueue.main.async {
+                    self.loading(show: false)
+                    self.goToFav = false
+                    self.performSegue(withIdentifier: "goToSearch", sender: nil)
+                }
+            }
+        }
+    }
+    
     fileprivate func getCategories() {
+        self.loading(show: true)
         generationsViewModel.getGenerations { generationsRes, error in
             if let e = error {
                 let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
                 DispatchQueue.main.async {
+                    self.loading(show: false)
                     banner.show()
                 }
             } else if let generations = generationsRes {
                 self.generations = generations.results
                 DispatchQueue.main.async {
-                    self.categoriesCollectionView.reloadData()
+                    self.goToFav = false
+                    self.loading(show: false)
                 }
             }
         }
@@ -122,6 +145,7 @@ extension GenerationsVC: UICollectionViewDelegate {
             if let e = error {
                 let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
                 DispatchQueue.main.async {
+                    self.loading(show: false)
                     banner.show()
                 }
             } else if let items = itemsRes {

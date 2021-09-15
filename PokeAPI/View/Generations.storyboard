@@ -80,6 +80,9 @@
                                                         <integer key="value" value="15"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="randomPokemonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xW4-oS-Teb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="tintColor" name="SoftOrange"/>

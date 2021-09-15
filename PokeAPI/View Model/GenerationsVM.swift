@@ -30,6 +30,17 @@ struct GenerationsVM {
         }
     }
     
+    func getRandomPokemonAvailable(completion: @escaping (GenerationsModel?, Error?) -> Void) {
+        Networking.shared.get(URL(string: Constants.API.RandomPokemonList())!) { (res: GenerationsModel?, error: Error?) in
+            if let err = error {
+                print(err.localizedDescription)
+                completion(nil, err)
+            } else if let pokemons = res {
+                completion(pokemons, nil)
+            }
+        }
+    }
+    
     func getListOfFavoritePokemons() throws -> [Description] {
         do {
             return try Storage.shared.getPokemons()

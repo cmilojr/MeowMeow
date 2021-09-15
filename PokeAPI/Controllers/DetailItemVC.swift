@@ -19,6 +19,8 @@ class DetailItemVC: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     private let detailItemVM = DetailItemVM()
     private var pokemonInfo: PokemonDetailModel?
+    var goToFav: Bool!
+    
     var pokemonName: Description?
     private var isFavorite: Bool! {
         didSet {
@@ -95,6 +97,9 @@ class DetailItemVC: UIViewController {
             do {
                 try detailItemVM.deletePokemon(self.pokemonName!)
                 self.isFavorite = !self.isFavorite
+                if goToFav {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
             } catch {
                 let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
                 DispatchQueue.main.async {

@@ -18,7 +18,7 @@ class SearchVC: UIViewController {
     var filteredPokemonList: [Description]?
     fileprivate var selectedPokemon: Description? = nil
     let searchController = UISearchController(searchResultsController: nil)
-    
+    var goToFav: Bool!
     private func reloadData() {
         self.filteredPokemonList = self.pokemonList
         self.itemsContainerView.reloadData()
@@ -111,6 +111,7 @@ class SearchVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? DetailItemVC {
             vc.pokemonName = self.selectedPokemon
+            vc.goToFav = self.goToFav
         }
     }
 }

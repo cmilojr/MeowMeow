@@ -18,6 +18,7 @@ class GenerationsVC: UIViewController {
     fileprivate var generationsViewModel = GenerationsVM()
     fileprivate var generations = [Description]()
     fileprivate var pokemonsInGeneration: [Description]?
+    fileprivate var goToFav = false
     
     fileprivate func setupCollectionView() {
         let nib = UINib(nibName: Constants.CellIdentifier.categoryCell, bundle: nil)
@@ -42,6 +43,7 @@ class GenerationsVC: UIViewController {
     @IBAction func favoritePokemonAction(_ sender: Any) {
         do {
             self.pokemonsInGeneration = try generationsViewModel.getListOfFavoritePokemons()
+            self.goToFav = true
             self.performSegue(withIdentifier: "goToSearch", sender: nil)
         } catch {
             let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
@@ -49,14 +51,6 @@ class GenerationsVC: UIViewController {
                 banner.show()
             }
         }
-    }
-    @IBAction func searchButtonAction(_ sender: UIButton) {
-        self.pokemonsInGeneration = nil
-        self.performSegue(withIdentifier: "goToSearch", sender: nil)
-    }
-    
-    @IBAction func changeCountryAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "goToSelectCountry", sender: nil)
     }
     
     fileprivate func getCategories() {
@@ -88,6 +82,7 @@ class GenerationsVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? SearchVC {
             vc.pokemonList = pokemonsInGeneration
+            vc.goToFav = self.goToFav
         }
     }
 }
@@ -136,7 +131,7 @@ extension GenerationsVC: UICollectionViewDelegate {
                 self.loading(show: false)
                 self.categoriesCollectionView.deselectItem(at: indexPath, animated: false)
                 self.performSegue(withIdentifier: "goToSearch", sender: nil)
-
+                self.goToFav = false
             }
         }
     }

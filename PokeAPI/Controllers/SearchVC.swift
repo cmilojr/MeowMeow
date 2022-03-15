@@ -65,8 +65,8 @@ class SearchVC: UIViewController {
     }
 
     fileprivate func setupCollectionView() {
-        let nib = UINib(nibName: Constants.CellIdentifier.categoryCell, bundle: nil)
-        itemsContainerView.register(nib, forCellWithReuseIdentifier: Constants.CellIdentifier.categoryCell)
+        let nib = UINib(nibName: CellIdentifiers.categoryCell.resource, bundle: nil)
+        itemsContainerView.register(nib, forCellWithReuseIdentifier: CellIdentifiers.categoryCell.resource)
         itemsContainerView.dataSource = self
         itemsContainerView.delegate = self
         itemsContainerView.backgroundColor = .none
@@ -78,10 +78,10 @@ class SearchVC: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = Constants.CustomColors.red
-        appearance.titleTextAttributes = [.foregroundColor: Constants.CustomColors.mintGreen!]
-        appearance.largeTitleTextAttributes = [.foregroundColor: Constants.CustomColors.mintGreen!]
-        self.navigationController?.navigationBar.tintColor = Constants.CustomColors.mintGreen
+        appearance.backgroundColor = Colors.red
+        appearance.titleTextAttributes = [.foregroundColor: Colors.mintGreen!]
+        appearance.largeTitleTextAttributes = [.foregroundColor: Colors.mintGreen!]
+        self.navigationController?.navigationBar.tintColor = Colors.mintGreen
         self.navigationController?.navigationBar.standardAppearance = appearance
         self.navigationController?.navigationBar.compactAppearance = appearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -129,7 +129,7 @@ extension SearchVC: UICollectionViewDataSource {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.categoryCell, for: indexPath) as! CategoryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.categoryCell.resource, for: indexPath) as! CategoryCell
         cell.setup(titleCategory: self.filteredPokemonList?[indexPath.row].name ?? "")
         return cell
     }

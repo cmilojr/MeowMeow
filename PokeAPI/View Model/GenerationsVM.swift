@@ -9,7 +9,7 @@ import Foundation
 
 struct GenerationsVM {
     func getGenerations(completion: @escaping (GenerationsModel?, Error?) -> Void) {
-        let url = Constants.API.generations
+        let url = ""
         Networking.shared.get(URL(string: url)!) { (res: GenerationsModel?, error: Error?) in
             if let err = error {
                 completion(nil, err)
@@ -31,7 +31,7 @@ struct GenerationsVM {
     }
     
     func getRandomPokemonAvailable(completion: @escaping (GenerationsModel?, Error?) -> Void) {
-        Networking.shared.get(URL(string: Constants.API.RandomPokemonList())!) { (res: GenerationsModel?, error: Error?) in
+        Networking.shared.get(URL(string: "")!) { (res: GenerationsModel?, error: Error?) in
             if let err = error {
                 print(err.localizedDescription)
                 completion(nil, err)

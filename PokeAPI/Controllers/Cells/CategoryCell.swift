@@ -19,7 +19,7 @@ class CategoryCell: UICollectionViewCell {
  
     override var isSelected: Bool {
         didSet {
-            self.container.backgroundColor = isSelected ? Constants.CustomColors.softPurple : .white
+            self.container.backgroundColor = isSelected ? Colors.softPurple : .white
         }
     }
 }

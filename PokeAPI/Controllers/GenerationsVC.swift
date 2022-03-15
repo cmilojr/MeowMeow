@@ -21,8 +21,8 @@ class GenerationsVC: UIViewController {
     fileprivate var goToFav = false
     
     fileprivate func setupCollectionView() {
-        let nib = UINib(nibName: Constants.CellIdentifier.categoryCell, bundle: nil)
-        categoriesCollectionView.register(nib, forCellWithReuseIdentifier: Constants.CellIdentifier.categoryCell)
+        let nib = UINib(nibName: CellIdentifiers.categoryCell.resource, bundle: nil)
+        categoriesCollectionView.register(nib, forCellWithReuseIdentifier: CellIdentifiers.categoryCell.resource)
         categoriesCollectionView.dataSource = self
         categoriesCollectionView.delegate = self
         categoriesCollectionView.backgroundColor = .none
@@ -123,7 +123,7 @@ extension GenerationsVC: UICollectionViewDataSource {
     }
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellIdentifier.categoryCell, for: indexPath) as! CategoryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifiers.categoryCell.resource, for: indexPath) as! CategoryCell
         cell.setup(titleCategory: generations[indexPath.row].name)
         return cell
     }

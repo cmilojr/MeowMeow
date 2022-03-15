@@ -19,8 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let winScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: winScene)
         guard let rootVC = UIStoryboard
-                .init(name: Constants.SBIdentifier.generations, bundle: nil)
-                .instantiateViewController(identifier: Constants.SBIdentifier.generations) as? GenerationsVC else {return}
+                .init(name: SBIdentifier.generations.resource, bundle: nil)
+                .instantiateViewController(identifier: SBIdentifier.generations.resource) as? GenerationsVC else {return}
 
         let rootNC = UINavigationController(rootViewController: rootVC)
         self.window?.rootViewController = rootNC

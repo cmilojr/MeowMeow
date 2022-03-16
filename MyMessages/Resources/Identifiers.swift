@@ -8,23 +8,22 @@
 import UIKit
 
 public enum CellIdentifiers {
-    case categoryCell
+    case postDataCell
     
     public var resource: String {
         switch self {
-        case .categoryCell:
-            return "CategoryCell"
+        case .postDataCell:
+            return "PostDataCell"
         }
     }
 }
 
 public enum SBIdentifier {
-    case generations
-    
+    case myMessages
     public var resource: String {
         switch self {
-        case .generations:
-            return "Generations"
+        case .myMessages:
+            return "MyMessages"
         }
     }
 }

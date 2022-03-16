@@ -7,12 +7,22 @@
 
 import Foundation
 
-public class Networking {
-    static let shared = Networking()
-    private init(){}
+protocol NetworkManagerProtocol {
+    func get<T: Decodable>(_ url: URL, completion: @escaping (T?, Error?)-> Void)
+}
+
+public class NativeNetworkManager: NetworkManagerProtocol {
+    let queue = OperationQueue()
     
     func get<T: Decodable>(_ url: URL, completion: @escaping (T?, Error?)-> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        queue.qualityOfService = .utility
+        let urlSession = URLSession.init(
+            configuration: .default,
+            delegate: nil,
+            delegateQueue: queue
+        )
+        
+        urlSession.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(nil,error)
             } else if

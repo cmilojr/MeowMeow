@@ -18,9 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let winScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: winScene)
-        guard let rootVC = UIStoryboard
-                .init(name: SBIdentifier.generations.resource, bundle: nil)
-                .instantiateViewController(identifier: SBIdentifier.generations.resource) as? GenerationsVC else {return}
+        
+        guard let rootVC = UIStoryboard.init(
+            name: SBIdentifier.myMessages.resource,
+            bundle: nil)
+            .instantiateViewController(
+                identifier: SBIdentifier.myMessages.resource
+            ) as? MyMessagesVC else {return}
 
         let rootNC = UINavigationController(rootViewController: rootVC)
         self.window?.rootViewController = rootNC

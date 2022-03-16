@@ -10,7 +10,7 @@ import Foundation
 public enum Resources {
     case posts
     case postComments(String)
-    case postInfo(String)
+    case userInformation(String)
     
     public var resource: String {
         switch self {
@@ -18,8 +18,8 @@ public enum Resources {
             return "/posts"
         case .postComments(let id):
             return "/posts/\(id)/comments"
-        case .postInfo(let id):
-            return "/posts/\(id)"
+        case .userInformation(let id):
+            return "/users/\(id)"
         }
     }
 }

@@ -9,19 +9,12 @@ import UIKit
 import NotificationBannerSwift
 
 class DetailItemVC: UIViewController {
-    @IBOutlet weak var pokemonNameLabel: UILabel!
-    @IBOutlet weak var pokemonIdLabel: UILabel!
-    @IBOutlet weak var movesLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var productImage: UIImageView!
-    @IBOutlet weak var weightLabel: UILabel!
-    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     private let detailItemVM = DetailItemVM()
-    private var pokemonInfo: PokemonDetailModel?
-    var goToFav: Bool!
+    var selectedMessage: PostModel?
     
-    var pokemonName: Description?
     private var isFavorite: Bool! {
         didSet {
             if let fav = isFavorite {
@@ -34,102 +27,96 @@ class DetailItemVC: UIViewController {
         }
     }
     
-    fileprivate func strikethroughLabel(oldPrice: String) -> NSMutableAttributedString {
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldPrice)
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-        return attributeString
-    }
-    
-    fileprivate func setupDetail(_ pokemon: PokemonDetailModel) {
-        var moves = ""
-        self.pokemonNameLabel.text = pokemon.name.capitalizingFirstLetter()
-        self.productImage.download(from: (pokemon.sprites.front_default))
-        self.pokemonIdLabel.text = "# \(pokemon.id)"
-        self.weightLabel.text = "\(pokemon.weight) Lbs"
-        self.heightLabel.text =
-            "\(pokemon.height) Feet"
-        let first = pokemon.moves.count - 5
-        let total = first > 0 ? 5 : first != -5 ? first * -1 : 0
-        for i in 0..<total {
-            let move = pokemon
-                .moves[i]
-                .move
-                .name
-                .capitalizingFirstLetter()
-                .replacingOccurrences(of: "-", with: " ")
-            if i == 0 {
-                moves += move
-            } else {
-                moves += ", \(move)"
-            }
-        }
-        self.movesLabel.text = moves
+    fileprivate func setupDetail(_ post: PostModel) {
+//        var moves = ""
+//        self.pokemonNameLabel.text = pokemon.name.capitalizingFirstLetter()
+//        self.productImage.download(from: (pokemon.sprites.front_default))
+//        self.pokemonIdLabel.text = "# \(pokemon.id)"
+//        self.weightLabel.text = "\(pokemon.weight) Lbs"
+//        self.heightLabel.text =
+//            "\(pokemon.height) Feet"
+//        let first = pokemon.moves.count - 5
+//        let total = first > 0 ? 5 : first != -5 ? first * -1 : 0
+//        for i in 0..<total {
+//            let move = pokemon
+//                .moves[i]
+//                .move
+//                .name
+//                .capitalizingFirstLetter()
+//                .replacingOccurrences(of: "-", with: " ")
+//            if i == 0 {
+//                moves += move
+//            } else {
+//                moves += ", \(move)"
+//            }
+//        }
+//        self.movesLabel.text = moves
     }
     
     private func setupPokemonDetail(name: String) {
-        detailItemVM.getPokemonDetail(name: name) { pokemonRes, error in
-            if let e = error {
-                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
-                DispatchQueue.main.async {
-                    banner.show()
-                }
-            } else if let pokemonInfo = pokemonRes {
-                DispatchQueue.main.async {
-                    self.setupDetail(pokemonInfo)
-                }
-            }
-        }
+//        detailItemVM.getPokemonDetail(name: name) { pokemonRes, error in
+//            if let e = error {
+//                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+//                DispatchQueue.main.async {
+//                    banner.show()
+//                }
+//            } else if let pokemonInfo = pokemonRes {
+//                DispatchQueue.main.async {
+//                    self.setupDetail(pokemonInfo)
+//                }
+//            }
+//        }
     }
     
     @IBAction func savePokemon(_ sender: Any) {
-        if !isFavorite {
-            do {
-                try detailItemVM.savePokemonDetail(self.pokemonName!)
-                self.isFavorite = !self.isFavorite
-            } catch {
-                print(error)
-                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
-                DispatchQueue.main.async {
-                    banner.show()
-                }
-            }
-        } else {
-            do {
-                try detailItemVM.deletePokemon(self.pokemonName!)
-                self.isFavorite = !self.isFavorite
-                if goToFav {
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-            } catch {
-                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
-                DispatchQueue.main.async {
-                    banner.show()
-                }
-            }
-        }
+//        if !isFavorite {
+//            do {
+//                try detailItemVM.savePokemonDetail(self.pokemonName!)
+//                self.isFavorite = !self.isFavorite
+//            } catch {
+//                print(error)
+//                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+//                DispatchQueue.main.async {
+//                    banner.show()
+//                }
+//            }
+//        } else {
+//            do {
+//                try detailItemVM.deletePokemon(self.pokemonName!)
+//                self.isFavorite = !self.isFavorite
+//                if goToFav {
+//                    self.navigationController?.popToRootViewController(animated: true)
+//                }
+//            } catch {
+//                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+//                DispatchQueue.main.async {
+//                    banner.show()
+//                }
+//            }
+//        }
     }
-    fileprivate func checkIsFavorite(_ pn: Description) {
-        do {
-            self.isFavorite = try self.detailItemVM.checkPokemon(pn)
-        } catch {
-            let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
-            DispatchQueue.main.async {
-                banner.show()
-            }
-        }
-    }
+//    fileprivate func checkIsFavorite(_ pn: Description) {
+//        do {
+//            self.isFavorite = try self.detailItemVM.checkPokemon(pn)
+//        } catch {
+//            let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+//            DispatchQueue.main.async {
+//                banner.show()
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Pokemon information"
-        if let pn = pokemonName {
-            self.setupPokemonDetail(name: pn.name)
-            self.checkIsFavorite(pn)
-        } else {
-            let banner = NotificationBanner(title: "Error", subtitle: "No pokemon selected", style: .danger)
-            DispatchQueue.main.async {
-                banner.show()
-            }
-        }
+//        self.navigationItem.title = "Pokemon information"
+//        if let pn = pokemonName {
+//            self.setupPokemonDetail(name: pn.name)
+//            self.checkIsFavorite(pn)
+//        } else {
+//            let banner = NotificationBanner(title: "Error", subtitle: "No pokemon selected", style: .danger)
+//            DispatchQueue.main.async {
+//                banner.show()
+//            }
+//        }
     }
 }

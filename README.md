@@ -1,3 +1,8 @@
-# PokeAPI
+# MyMessages
 
-In this app you can view pokemons in different generations and a brief description of them.
+In this application the messages of this api [JSONPlaceholder](https://jsonplaceholder.typicode.com) are displayed. 
+The apps is storing the favorite messages with SQLite. 
+The managed architecture is MVVM.
+
+Before starting please install the pods through the terminal with command:
+pod install

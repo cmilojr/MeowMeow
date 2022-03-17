@@ -16,20 +16,34 @@ struct UserDefaultsManager {
     static let shared: UserDefaultsManager = {
         return UserDefaultsManager()
     }()
+    
     private init() {}
     
     func getReadedMessages() -> [PostModel] {
-        return userDefault.object(forKey: UserDefaultsKeys.readedPosts.rawValue) as! [PostModel]
+        do {
+            let data = userDefault.data(forKey: UserDefaultsKeys.readedPosts.rawValue)
+            if let data = data {
+                return try JSONDecoder().decode([PostModel].self, from: data)
+            }
+            return []
+        } catch {
+            return []
+        }
     }
     
     func setReadedMessages(post: PostModel) {
-        var readedPosts = getReadedMessages()
-        readedPosts.append(post)
-        userDefault.set(readedPosts, forKey: UserDefaultsKeys.readedPosts.rawValue)
+        do {
+            var readedPosts = getReadedMessages()
+            readedPosts.append(post)
+            let data = try JSONEncoder().encode(readedPosts)
+            userDefault.set(data, forKey: UserDefaultsKeys.readedPosts.rawValue)
+        } catch {
+            print(error)
+        }
     }
     
     func clearReadedMessages() {
-        userDefault.set([], forKey: UserDefaultsKeys.readedPosts.rawValue)
+        userDefault.set(nil, forKey: UserDefaultsKeys.readedPosts.rawValue)
     }
 }
 

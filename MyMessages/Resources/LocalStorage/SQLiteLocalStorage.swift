@@ -98,9 +98,14 @@ struct SQLiteLocalStorage: LocalStorageProtocol {
     
     func checkIsFavPost(idPost: Int, userId: Int) throws -> Bool {
         do {
-            let post = self.favoritePostTable.where(self.id == idPost && self.userId == userId)
-            for _ in try database.prepare(post) {
-                return true
+            let post = self.favoritePostTable.filter(self.userId == userId && self.id == idPost)
+            let val = try database.prepare(post)
+            for row in val {
+                let id = row[self.id]
+                let usrId = row[self.userId]
+                if id == idPost && usrId == userId {
+                    return true
+                }
             }
             return false
         } catch {

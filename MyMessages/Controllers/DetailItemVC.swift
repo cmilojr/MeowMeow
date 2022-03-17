@@ -8,6 +8,10 @@
 import UIKit
 import NotificationBannerSwift
 
+protocol DetailItemVCProtocol: AnyObject {
+    func reload()
+}
+
 class DetailItemVC: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,6 +29,7 @@ class DetailItemVC: UIViewController {
             }
         }
     }
+    weak var delegate: DetailItemVCProtocol?
     var selectedPost: PostModel?
     var commentsOfPost: [CommentModel]?
     var userInfo: UserInformationModel? {
@@ -134,6 +139,11 @@ class DetailItemVC: UIViewController {
         loadUserInformation()
         loadUserComments()
         self.descriptionLabel.text = selectedPost?.body
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.reload()
     }
 }
 

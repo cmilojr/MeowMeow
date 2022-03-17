@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreText
 
 struct MyMessagesVM {
     var storage: LocalStorageProtocol?
@@ -32,5 +33,24 @@ struct MyMessagesVM {
     func clearData() throws {
         try storage?.deleteAllData()
         UserDefaultsManager.shared.clearReadedMessages()
+    }
+    
+    func isReaded(post: PostModel) -> Bool {
+        let allReaded = UserDefaultsManager.shared.getReadedMessages()
+        let res = allReaded.first { $0.userId == post.userId && $0.id == post.id }
+        return res != nil
+    }
+    
+    func saveReaded(post: PostModel) {
+        UserDefaultsManager.shared.setReadedMessages(post: post)
+    }
+    
+    func isFavorite(post: PostModel) -> Bool {
+        do {
+            let isFav = try storage?.checkIsFavPost(idPost: post.id, userId: post.userId)
+            return isFav ?? false
+        } catch {
+            return false
+        }
     }
 }

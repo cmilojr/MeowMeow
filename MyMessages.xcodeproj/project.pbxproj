@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B30E98BE27E39DAB0021BE80 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E98BD27E39DAB0021BE80 /* UserDefaultManager.swift */; };
-		B320BD6526F1A2F400421D2B /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320BD6426F1A2F400421D2B /* StorageTests.swift */; };
 		B32401C826BA19D800102998 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32401C726BA19D800102998 /* AppDelegate.swift */; };
 		B32401CA26BA19D800102998 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32401C926BA19D800102998 /* SceneDelegate.swift */; };
 		B32401D126BA19DA00102998 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B32401D026BA19DA00102998 /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 		B36C566C26BDA0D100594EED /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566B26BDA0D100594EED /* Identifiers.swift */; };
 		B36C566E26BDC4B800594EED /* MyMessages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36C566D26BDC4B800594EED /* MyMessages.storyboard */; };
 		B36C567026BDC4C500594EED /* MyMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566F26BDC4C500594EED /* MyMessagesVC.swift */; };
-		B39EA20126F2415B00F5AE25 /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39EA20026F2415B00F5AE25 /* NetworkingTests.swift */; };
 		B3AA50A627E2835600E70731 /* PostDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50A427E2835600E70731 /* PostDataCell.swift */; };
 		B3AA50A727E2835600E70731 /* PostDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3AA50A527E2835600E70731 /* PostDataCell.xib */; };
 		B3AA50A927E295F500E70731 /* RemoteConection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50A827E295F500E70731 /* RemoteConection.swift */; };
@@ -58,8 +56,6 @@
 		A610132C8CC4CB8207D74987 /* Pods-MyMessages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMessages.release.xcconfig"; path = "Target Support Files/Pods-MyMessages/Pods-MyMessages.release.xcconfig"; sourceTree = "<group>"; };
 		B30E98BD27E39DAB0021BE80 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		B320BD5A26F1A2CC00421D2B /* MyMessagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyMessagesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B320BD5E26F1A2CC00421D2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B320BD6426F1A2F400421D2B /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 		B32401C426BA19D800102998 /* MyMessages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMessages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B32401C726BA19D800102998 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B32401C926BA19D800102998 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,7 +69,6 @@
 		B36C566B26BDA0D100594EED /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		B36C566D26BDC4B800594EED /* MyMessages.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyMessages.storyboard; sourceTree = "<group>"; };
 		B36C566F26BDC4C500594EED /* MyMessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessagesVC.swift; sourceTree = "<group>"; };
-		B39EA20026F2415B00F5AE25 /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		B3AA50A427E2835600E70731 /* PostDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataCell.swift; sourceTree = "<group>"; };
 		B3AA50A527E2835600E70731 /* PostDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDataCell.xib; sourceTree = "<group>"; };
 		B3AA50A827E295F500E70731 /* RemoteConection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConection.swift; sourceTree = "<group>"; };
@@ -132,21 +127,10 @@
 			path = LocalStorage;
 			sourceTree = "<group>";
 		};
-		B320BD5B26F1A2CC00421D2B /* MyMessagesTests */ = {
-			isa = PBXGroup;
-			children = (
-				B320BD5E26F1A2CC00421D2B /* Info.plist */,
-				B320BD6426F1A2F400421D2B /* StorageTests.swift */,
-				B39EA20026F2415B00F5AE25 /* NetworkingTests.swift */,
-			);
-			path = MyMessagesTests;
-			sourceTree = "<group>";
-		};
 		B32401BB26BA19D800102998 = {
 			isa = PBXGroup;
 			children = (
 				B32401C626BA19D800102998 /* MyMessages */,
-				B320BD5B26F1A2CC00421D2B /* MyMessagesTests */,
 				B32401C526BA19D800102998 /* Products */,
 				EC5FD4A81F1B7A80DB833773 /* Pods */,
 				CF4B358B18EC3278452CC3E1 /* Frameworks */,
@@ -474,8 +458,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B320BD6526F1A2F400421D2B /* StorageTests.swift in Sources */,
-				B39EA20126F2415B00F5AE25 /* NetworkingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

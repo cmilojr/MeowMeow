@@ -119,12 +119,15 @@ class MyMessagesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationControllerAppearance()
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail" {
             let vc = segue.destination as! DetailItemVC
+            vc.delegate = self
             vc.selectedPost = self.seletedPost
+            viewModel.saveReaded(post: self.seletedPost!)
         }
     }
     
@@ -200,10 +203,17 @@ extension MyMessagesVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.postDataCell.resource, for: indexPath) as! PostDataCell
         
         if segmentedControl.selectedSegmentIndex == 0 {
-            cell.setup(isFavorite: false, description: allPosts?[indexPath.row].title ?? "")
+            let post = allPosts?[indexPath.row]
+            let isReaded = viewModel.isReaded(post: post!)
+            let isFav = viewModel.isFavorite(post: post!)
+            cell.setup(isFavorite: isFav, isReaded: isReaded, description: post?.title ?? "")
         } else {
-            cell.setup(isFavorite: false, description: favoritePosts?[indexPath.row].title ?? "")
+            let post = favoritePosts?[indexPath.row]
+            let isReaded = viewModel.isReaded(post: post!)
+            let isFav = viewModel.isFavorite(post: post!)
+            cell.setup(isFavorite: isFav, isReaded: isReaded, description: post?.title ?? "")
         }
+        
         cell.selectionStyle = .none
         
         return cell
@@ -218,5 +228,13 @@ extension MyMessagesVC: UITableViewDataSource {
         }
         self.loading(show: false)
         performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+}
+
+extension MyMessagesVC: DetailItemVCProtocol {
+    func reload() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }

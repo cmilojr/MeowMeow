@@ -10,113 +10,113 @@ import NotificationBannerSwift
 
 class DetailItemVC: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
-    private let detailItemVM = DetailItemVM()
-    var selectedMessage: PostModel?
-    
-    private var isFavorite: Bool! {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var websiteLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
+    private var viewModel = DetailItemVM()
+    var selectedPost: PostModel?
+    var commentsOfPost: [CommentModel]?
+    var userInfo: UserInformationModel? {
         didSet {
-            if let fav = isFavorite {
-                if fav {
-                    self.favoriteButton.setImage(UIImage(named: "HeartFill"), for: .normal)
-                } else {
-                    self.favoriteButton.setImage(UIImage(named: "HeartNotFill"), for: .normal)
+            updateUserInfoInUI()
+        }
+    }
+    
+    fileprivate func updateUserInfoInUI() {
+        DispatchQueue.main.async {
+            self.nameLabel.text = self.userInfo?.name
+            self.emailLabel.text = self.userInfo?.email
+            self.phoneLabel.text = self.userInfo?.phone
+            self.websiteLabel.text = self.userInfo?.website
+        }
+    }
+
+    private var isFavorite: Bool = false {
+        didSet {
+            if isFavorite {
+                self.favoriteButton.image = UIImage(named: "star.fill")
+            } else {
+                self.favoriteButton.image = UIImage(named: "star")
+            }
+        }
+    }
+    
+    fileprivate func setupTableView() {
+        let nib = UINib(nibName: CellIdentifiers.commentatyCell.resource, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: CellIdentifiers.commentatyCell.resource)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    fileprivate func loadUserInformation() {
+        if let userId = self.selectedPost?.userId {
+            viewModel.getUserInformation(userId: userId) { userData, error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+                        //self.loading(show: false)
+                        banner.show()
+                    }
+
+                } else if let userData = userData {
+                    self.userInfo = userData
                 }
             }
         }
     }
     
-    fileprivate func setupDetail(_ post: PostModel) {
-//        var moves = ""
-//        self.pokemonNameLabel.text = pokemon.name.capitalizingFirstLetter()
-//        self.productImage.download(from: (pokemon.sprites.front_default))
-//        self.pokemonIdLabel.text = "# \(pokemon.id)"
-//        self.weightLabel.text = "\(pokemon.weight) Lbs"
-//        self.heightLabel.text =
-//            "\(pokemon.height) Feet"
-//        let first = pokemon.moves.count - 5
-//        let total = first > 0 ? 5 : first != -5 ? first * -1 : 0
-//        for i in 0..<total {
-//            let move = pokemon
-//                .moves[i]
-//                .move
-//                .name
-//                .capitalizingFirstLetter()
-//                .replacingOccurrences(of: "-", with: " ")
-//            if i == 0 {
-//                moves += move
-//            } else {
-//                moves += ", \(move)"
-//            }
-//        }
-//        self.movesLabel.text = moves
+    fileprivate func loadUserComments() {
+        if let postId = self.selectedPost?.id {
+            viewModel.getCommentsOfPost(postId: postId) { commentsRes, error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+                        //self.loading(show: false)
+                        banner.show()
+                    }
+
+                } else if let comments = commentsRes {
+                    self.commentsOfPost = comments
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
     }
-    
-    private func setupPokemonDetail(name: String) {
-//        detailItemVM.getPokemonDetail(name: name) { pokemonRes, error in
-//            if let e = error {
-//                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
-//                DispatchQueue.main.async {
-//                    banner.show()
-//                }
-//            } else if let pokemonInfo = pokemonRes {
-//                DispatchQueue.main.async {
-//                    self.setupDetail(pokemonInfo)
-//                }
-//            }
-//        }
+    @IBAction func favoriteAction(_ sender: Any) {
+        isFavorite = !isFavorite
     }
-    
-    @IBAction func savePokemon(_ sender: Any) {
-//        if !isFavorite {
-//            do {
-//                try detailItemVM.savePokemonDetail(self.pokemonName!)
-//                self.isFavorite = !self.isFavorite
-//            } catch {
-//                print(error)
-//                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
-//                DispatchQueue.main.async {
-//                    banner.show()
-//                }
-//            }
-//        } else {
-//            do {
-//                try detailItemVM.deletePokemon(self.pokemonName!)
-//                self.isFavorite = !self.isFavorite
-//                if goToFav {
-//                    self.navigationController?.popToRootViewController(animated: true)
-//                }
-//            } catch {
-//                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
-//                DispatchQueue.main.async {
-//                    banner.show()
-//                }
-//            }
-//        }
-    }
-//    fileprivate func checkIsFavorite(_ pn: Description) {
-//        do {
-//            self.isFavorite = try self.detailItemVM.checkPokemon(pn)
-//        } catch {
-//            let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
-//            DispatchQueue.main.async {
-//                banner.show()
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.title = "Pokemon information"
-//        if let pn = pokemonName {
-//            self.setupPokemonDetail(name: pn.name)
-//            self.checkIsFavorite(pn)
-//        } else {
-//            let banner = NotificationBanner(title: "Error", subtitle: "No pokemon selected", style: .danger)
-//            DispatchQueue.main.async {
-//                banner.show()
-//            }
-//        }
+        let remoteConnection = RemoteConnection(networkManager: NativeNetworkManager())
+        viewModel.remoteUserInfoData = remoteConnection
+        viewModel.remoteCommentsData = remoteConnection
+        setupTableView()
+        loadUserInformation()
+        loadUserComments()
+        self.descriptionLabel.text = selectedPost?.body
+        isFavorite = true
+    }
+}
+
+extension DetailItemVC: UITableViewDelegate {
+
+}
+
+extension DetailItemVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commentsOfPost?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.commentatyCell.resource, for: indexPath) as! CommentaryCell
+        cell.descriptionLabel.text = commentsOfPost?[indexPath.row].body
+        cell.selectionStyle = .none
+        return cell
     }
 }

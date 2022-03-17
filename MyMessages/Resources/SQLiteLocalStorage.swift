@@ -10,7 +10,7 @@ import SQLite
 
 protocol LocalStorageProtocol {
     func putPost(_ postData: PostModel) throws
-    func deletePost(idPost: Int, userId: Int) throws
+    func deletePost(_ postData: PostModel) throws
     func getFavoritePosts() throws -> [PostModel]
 }
 
@@ -72,18 +72,17 @@ struct SQLiteLocalStorage: LocalStorageProtocol {
                 self.id <- postData.id
             )
             try self.database.run(inserPost)
-            print("Pokemon guardado")
         } catch {
             throw error
         }
     }
     
-    func deletePost(idPost: Int, userId: Int) throws {
+    func deletePost(_ postData: PostModel) throws {
         do {
-            let pokemons = self.favoritePostTable.where(
-                self.id == idPost && self.userId == userId
+            let post = self.favoritePostTable.where(
+                self.id == postData.id && self.userId == postData.userId
             )
-            try database.run(pokemons.delete())
+            try database.run(post.delete())
         } catch {
             throw error
         }

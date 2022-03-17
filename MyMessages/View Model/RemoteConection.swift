@@ -16,7 +16,7 @@ protocol RemoteDataCommentsProtocol {
 }
 
 protocol RemoteDataUserInformationProtocol {
-    func getAllCommentsOfPostFromServer(id: String, completion: @escaping (UserInformationModel?, Error?) -> Void)
+    func getUserInformationFromServer(id: String, completion: @escaping (UserInformationModel?, Error?) -> Void)
 }
 
 struct RemoteConnection: RemoteDataPostProtocol {
@@ -56,7 +56,7 @@ extension RemoteConnection: RemoteDataCommentsProtocol {
 }
 
 extension RemoteConnection: RemoteDataUserInformationProtocol {
-    func getAllCommentsOfPostFromServer(id: String, completion: @escaping (UserInformationModel?, Error?) -> Void) {
+    func getUserInformationFromServer(id: String, completion: @escaping (UserInformationModel?, Error?) -> Void) {
         let urlString = ServerURL.dev.rawValue+Resources.userInformation(id).resource
         if let url = URL(string: urlString) {
             networkManager?.get(url) { (res: UserInformationModel?, error: Error?) in

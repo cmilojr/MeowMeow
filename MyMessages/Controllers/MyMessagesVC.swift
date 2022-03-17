@@ -21,6 +21,7 @@ class MyMessagesVC: UIViewController {
     fileprivate var favoritePosts: [PostModel]?
     fileprivate var allPosts: [PostModel]?
     fileprivate var goToFav = false
+    fileprivate var seletedPost: PostModel?
     
     fileprivate func setupTableView() {
         let nib = UINib(nibName: CellIdentifiers.postDataCell.resource, bundle: nil)
@@ -38,6 +39,7 @@ class MyMessagesVC: UIViewController {
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         
         navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.topItem?.title = "Posts"
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -67,9 +69,11 @@ class MyMessagesVC: UIViewController {
         self.loading(show: true)
         viewModel.getAllPosts { postsRes, error in
             if let e = error {
-                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
-                self.loading(show: false)
-                banner.show()
+                DispatchQueue.main.async {
+                    let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
+                    self.loading(show: false)
+                        banner.show()
+                }
             } else if let posts = postsRes {
                 self.allPosts = posts
                 DispatchQueue.main.async {
@@ -86,18 +90,20 @@ class MyMessagesVC: UIViewController {
         let networkManager = NativeNetworkManager()
         viewModel.remoteData =  RemoteConnection(networkManager: networkManager)
         viewModel.storage = SQLiteLocalStorage()
+        setupSegmentedControlAppearance()
         getAllPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         setupNavigationControllerAppearance()
-        setupSegmentedControlAppearance()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        if segue.identifier == "toDetail" {
+            let vc = segue.destination as! DetailItemVC
+            vc.selectedPost = self.seletedPost
+        }
     }
 }
 
@@ -148,29 +154,19 @@ extension MyMessagesVC: UITableViewDataSource {
         } else {
             cell.setup(isFavorite: false, description: favoritePosts?.description ?? "")
         }
+        cell.selectionStyle = .none
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.loading(show: true)
+        if segmentedControl.selectedSegmentIndex == 0 {
+            self.seletedPost = allPosts?[indexPath.row]
+        } else {
+            self.seletedPost = favoritePosts?[indexPath.row]
+        }
+        self.loading(show: false)
         performSegue(withIdentifier: "toDetail", sender: nil)
-//        generationsViewModel.getPokemonAvailableInGeneration(generationUrl: generations[indexPath.item].url) { itemsRes, error in
-//            if let e = error {
-//                let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
-//                DispatchQueue.main.async {
-//                    self.loading(show: false)
-//                    banner.show()
-//                }
-//            } else if let items = itemsRes {
-//                self.pokemonsInGeneration = items.pokemon_species
-//            }
-//            DispatchQueue.main.async {
-//                self.loading(show: false)
-//                self.categoriesCollectionView.deselectItem(at: indexPath, animated: false)
-//                self.performSegue(withIdentifier: "goToSearch", sender: nil)
-//                self.goToFav = false
-//            }
-//        }
     }
 }

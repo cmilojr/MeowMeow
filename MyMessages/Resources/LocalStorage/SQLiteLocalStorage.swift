@@ -13,6 +13,7 @@ protocol LocalStorageProtocol {
     func deletePost(_ postData: PostModel) throws
     func getFavoritePosts() throws -> [PostModel]
     func checkIsFavPost(idPost: Int, userId: Int) throws -> Bool
+    func deleteAllData() throws
 }
 
 struct SQLiteLocalStorage: LocalStorageProtocol {
@@ -107,7 +108,7 @@ struct SQLiteLocalStorage: LocalStorageProtocol {
         }
     }
     
-    func deleteTable() throws {
+    func deleteAllData() throws {
         do {
             let drop = self.favoritePostTable.drop(ifExists: true)
             try self.database.run(drop)

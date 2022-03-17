@@ -28,4 +28,9 @@ struct MyMessagesVM {
             throw DependencyError.storageManagerNotFound
         }
     }
+    
+    func clearData() throws {
+        try storage?.deleteAllData()
+        UserDefaultsManager.shared.clearReadedMessages()
+    }
 }

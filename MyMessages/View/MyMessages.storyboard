@@ -29,6 +29,9 @@
                                     <segment title="Favorities"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentAction:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Pkv-MF-pDg"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXh-H8-CzF">
                                 <rect key="frame" x="0.0" y="139" width="414" height="723"/>
@@ -46,6 +49,9 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Delete All"/>
+                                        <connections>
+                                            <action selector="clearData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oKl-Dh-1hc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -134,7 +140,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Posts" largeTitleDisplayMode="never" id="4CI-fF-JIP">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="reload" id="8wW-6w-chj"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="reload" id="8wW-6w-chj">
+                            <connections>
+                                <action selector="reloadData:" destination="Y6W-OH-hqX" id="LzI-Fd-Oa3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="blockBackground" destination="K4U-tj-Fdh" id="Icy-dz-jlS"/>

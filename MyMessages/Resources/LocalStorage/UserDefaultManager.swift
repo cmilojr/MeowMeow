@@ -13,6 +13,10 @@ enum UserDefaultsKeys: String {
 
 struct UserDefaultsManager {
     private let userDefault = UserDefaults.standard
+    static let shared: UserDefaultsManager = {
+        return UserDefaultsManager()
+    }()
+    private init() {}
     
     func getReadedMessages() -> [PostModel] {
         return userDefault.object(forKey: UserDefaultsKeys.readedPosts.rawValue) as! [PostModel]

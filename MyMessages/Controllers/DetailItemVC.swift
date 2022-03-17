@@ -16,7 +16,15 @@ class DetailItemVC: UIViewController {
     @IBOutlet weak var websiteLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     private var viewModel = DetailItemVM()
-    private var isFavorite: Bool = false
+    private var isFavorite: Bool = false {
+        didSet {
+            if isFavorite {
+                self.navigationItem.rightBarButtonItem = makeFav()
+            } else {
+                self.navigationItem.rightBarButtonItem = deleteFav()
+            }
+        }
+    }
     var selectedPost: PostModel?
     var commentsOfPost: [CommentModel]?
     var userInfo: UserInformationModel? {
@@ -99,23 +107,16 @@ class DetailItemVC: UIViewController {
         if let post = self.selectedPost {
             do {
                 try self.viewModel.storePost(state: isFavorite, post: post)
-                if isFavorite {
-                    self.navigationItem.rightBarButtonItem = makeFav()
-                } else {
-                    self.navigationItem.rightBarButtonItem = deleteFav()
-                }
             } catch {
-                
+                print(error)
             }
         }
     }
     
     fileprivate func setupStarButton() {
         do {
-            if let post = selectedPost, try viewModel.checkIsFavorite(post: post) {
-                self.navigationItem.rightBarButtonItem = makeFav()
-            } else {
-                self.navigationItem.rightBarButtonItem = deleteFav()
+            if let post = selectedPost {
+                self.isFavorite = try viewModel.checkIsFavorite(post: post)
             }
         } catch {
             print(error)

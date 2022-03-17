@@ -67,6 +67,7 @@ class MyMessagesVC: UIViewController {
     
     fileprivate func getAllPosts() {
         self.loading(show: true)
+        self.allPosts?.removeAll()
         viewModel.getAllPosts { postsRes, error in
             if let e = error {
                 DispatchQueue.main.async {
@@ -84,6 +85,26 @@ class MyMessagesVC: UIViewController {
         }
     }
     
+    fileprivate func getFavoritePosts() {
+        self.loading(show: true)
+        self.favoritePosts?.removeAll()
+        do {
+            let favPosts = try viewModel.getListOfFavoritePost()
+            self.favoritePosts = favPosts
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.loading(show: false)
+            }
+        } catch {
+            self.favoritePosts = []
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.loading(show: false)
+            }
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -92,6 +113,7 @@ class MyMessagesVC: UIViewController {
         viewModel.storage = SQLiteLocalStorage()
         setupSegmentedControlAppearance()
         getAllPosts()
+        getFavoritePosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +127,33 @@ class MyMessagesVC: UIViewController {
             vc.selectedPost = self.seletedPost
         }
     }
+    
+    @IBAction func reloadData(_ sender: Any) {
+        getAllPosts()
+        getFavoritePosts()
+    }
+    @IBAction func clearData(_ sender: Any) {
+        do {
+            self.allPosts?.removeAll()
+            self.favoritePosts?.removeAll()
+            try self.viewModel.clearData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } catch {
+            DispatchQueue.main.async {
+                let banner = NotificationBanner(title: "Error", subtitle: error.localizedDescription, style: .danger)
+                self.loading(show: false)
+                    banner.show()
+            }
+        }
+    }
+    
+    @IBAction func segmentAction(_ sender: UISegmentedControl) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension MyMessagesVC: UITableViewDelegate {
@@ -113,7 +162,7 @@ extension MyMessagesVC: UITableViewDelegate {
             if let allPost = allPosts, allPost.count != 0 {
                 emptyState.isHidden = true
                 dataView.isHidden = false
-                return allPost.count
+                return 1
             } else {
                 emptyState.isHidden = false
                 dataView.isHidden = true
@@ -121,16 +170,17 @@ extension MyMessagesVC: UITableViewDelegate {
             }
         } else {
             if let favoritePosts = favoritePosts, favoritePosts.count != 0 {
-                emptyState.isHidden = false
-                dataView.isHidden = true
-                return favoritePosts.count
-            } else {
                 emptyState.isHidden = true
                 dataView.isHidden = false
+                return 1
+            } else {
+                emptyState.isHidden = false
+                dataView.isHidden = true
                 return 0
             }
         }
     }
+    
 }
 
 extension MyMessagesVC: UITableViewDataSource {
@@ -152,7 +202,7 @@ extension MyMessagesVC: UITableViewDataSource {
         if segmentedControl.selectedSegmentIndex == 0 {
             cell.setup(isFavorite: false, description: allPosts?[indexPath.row].title ?? "")
         } else {
-            cell.setup(isFavorite: false, description: favoritePosts?.description ?? "")
+            cell.setup(isFavorite: false, description: favoritePosts?[indexPath.row].title ?? "")
         }
         cell.selectionStyle = .none
         

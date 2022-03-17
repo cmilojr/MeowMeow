@@ -10,6 +10,7 @@ import Foundation
 enum StorageError: Error {
     case errorConnection
     case errorCreatingTable
+    case errorDropingTable
 }
 
 extension StorageError: CustomStringConvertible {
@@ -19,6 +20,8 @@ extension StorageError: CustomStringConvertible {
             return "Error communicating with database"
         case .errorCreatingTable:
             return "Error creating table in the database"
+        case .errorDropingTable:
+            return "Error deleting table in the database"
         }
     }
 }

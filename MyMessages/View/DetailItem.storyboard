@@ -136,17 +136,10 @@
                             <constraint firstItem="i2B-lN-eEu" firstAttribute="top" secondItem="M5P-c5-3T3" secondAttribute="top" id="y6V-AY-pmb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Post" id="JAS-aR-1Xm">
-                        <barButtonItem key="rightBarButtonItem" image="star" catalog="system" id="YqF-xN-1xW">
-                            <connections>
-                                <action selector="favoriteAction:" destination="DjG-Ni-ROo" id="q9T-RA-Zhw"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Post" id="JAS-aR-1Xm"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="ETG-K4-K0r" id="wMw-tr-fc5"/>
                         <outlet property="emailLabel" destination="mvf-nB-D9j" id="YTd-yb-zyC"/>
-                        <outlet property="favoriteButton" destination="YqF-xN-1xW" id="tf1-Za-ne6"/>
                         <outlet property="nameLabel" destination="qfL-fL-lxn" id="20z-17-CaL"/>
                         <outlet property="phoneLabel" destination="o7k-Hn-DyR" id="KtR-a9-GTg"/>
                         <outlet property="tableView" destination="XEd-X4-7Fb" id="sPC-LH-m7p"/>
@@ -160,7 +153,6 @@
     </scenes>
     <color key="tintColor" systemColor="systemGreenColor"/>
     <resources>
-        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

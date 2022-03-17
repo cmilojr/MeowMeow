@@ -12,6 +12,7 @@ protocol LocalStorageProtocol {
     func putPost(_ postData: PostModel) throws
     func deletePost(_ postData: PostModel) throws
     func getFavoritePosts() throws -> [PostModel]
+    func checkIsFavPost(idPost: Int, userId: Int) throws -> Bool
 }
 
 struct SQLiteLocalStorage: LocalStorageProtocol {
@@ -33,19 +34,9 @@ struct SQLiteLocalStorage: LocalStorageProtocol {
         }
     }
     
-    // FIX
     init() {
-        do {
-            try conectToDatabase()
-        } catch {
-            
-        }
-        
-        do {
-            try createTable()
-        } catch {
-            
-        }
+        try? conectToDatabase()
+        try? createTable()
     }
     
     private func createTable() throws {
@@ -72,6 +63,7 @@ struct SQLiteLocalStorage: LocalStorageProtocol {
                 self.id <- postData.id
             )
             try self.database.run(inserPost)
+            print(try getFavoritePosts())
         } catch {
             throw error
         }
@@ -83,11 +75,11 @@ struct SQLiteLocalStorage: LocalStorageProtocol {
                 self.id == postData.id && self.userId == postData.userId
             )
             try database.run(post.delete())
+            print(try getFavoritePosts())
         } catch {
             throw error
         }
     }
-    
     
     func getFavoritePosts() throws -> [PostModel] {
         do {
@@ -103,17 +95,24 @@ struct SQLiteLocalStorage: LocalStorageProtocol {
         }
     }
     
-    
-    // FIX
-    func checkPost(name: String) throws -> Bool {
+    func checkIsFavPost(idPost: Int, userId: Int) throws -> Bool {
         do {
-            let pokemons = self.favoritePostTable.where(self.title == name)
-            for _ in try database.prepare(pokemons) {
+            let post = self.favoritePostTable.where(self.id == idPost && self.userId == userId)
+            for _ in try database.prepare(post) {
                 return true
             }
             return false
         } catch {
             throw error
+        }
+    }
+    
+    func deleteTable() throws {
+        do {
+            let drop = self.favoritePostTable.drop(ifExists: true)
+            try self.database.run(drop)
+        } catch {
+            throw StorageError.errorDropingTable
         }
     }
 }

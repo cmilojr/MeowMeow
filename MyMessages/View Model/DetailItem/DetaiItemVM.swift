@@ -41,4 +41,10 @@ struct DetailItemVM {
             try storage?.deletePost(post)
         }
     }
+    
+    func checkIsFavorite(post: PostModel) throws -> Bool {
+        let check = try storage?.checkIsFavPost(idPost: post.id, userId: post.userId)
+        guard let check = check else { return false }
+        return check
+    }
 }

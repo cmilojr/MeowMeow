@@ -14,9 +14,9 @@ class DetailItemVC: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var websiteLabel: UILabel!
-    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     private var viewModel = DetailItemVM()
+    private var isFavorite: Bool = false
     var selectedPost: PostModel?
     var commentsOfPost: [CommentModel]?
     var userInfo: UserInformationModel? {
@@ -31,16 +31,6 @@ class DetailItemVC: UIViewController {
             self.emailLabel.text = self.userInfo?.email
             self.phoneLabel.text = self.userInfo?.phone
             self.websiteLabel.text = self.userInfo?.website
-        }
-    }
-
-    private var isFavorite: Bool = false {
-        didSet {
-            if isFavorite {
-                self.favoriteButton.image = UIImage(named: "star.fill")
-            } else {
-                self.favoriteButton.image = UIImage(named: "star")
-            }
         }
     }
     
@@ -87,8 +77,49 @@ class DetailItemVC: UIViewController {
             }
         }
     }
-    @IBAction func favoriteAction(_ sender: Any) {
+    
+    fileprivate func makeFav() -> UIBarButtonItem {
+        let button = UIButton(type: .custom)
+        let image = UIImage(named: "starFill")
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action:#selector(favoriteAction), for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
+    }
+    
+    fileprivate func deleteFav() -> UIBarButtonItem {
+        let button = UIButton(type: .custom)
+        let image = UIImage(named: "starNoFill")
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action:#selector(favoriteAction), for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
+    }
+    
+    @objc func favoriteAction(_ sender: Any) {
         isFavorite = !isFavorite
+        if let post = self.selectedPost {
+            do {
+                try self.viewModel.storePost(state: isFavorite, post: post)
+                if isFavorite {
+                    self.navigationItem.rightBarButtonItem = makeFav()
+                } else {
+                    self.navigationItem.rightBarButtonItem = deleteFav()
+                }
+            } catch {
+                
+            }
+        }
+    }
+    
+    fileprivate func setupStarButton() {
+        do {
+            if let post = selectedPost, try viewModel.checkIsFavorite(post: post) {
+                self.navigationItem.rightBarButtonItem = makeFav()
+            } else {
+                self.navigationItem.rightBarButtonItem = deleteFav()
+            }
+        } catch {
+            print(error)
+        }
     }
     
     override func viewDidLoad() {
@@ -96,11 +127,12 @@ class DetailItemVC: UIViewController {
         let remoteConnection = RemoteConnection(networkManager: NativeNetworkManager())
         viewModel.remoteUserInfoData = remoteConnection
         viewModel.remoteCommentsData = remoteConnection
+        viewModel.storage = SQLiteLocalStorage()
         setupTableView()
+        setupStarButton()
         loadUserInformation()
         loadUserComments()
         self.descriptionLabel.text = selectedPost?.body
-        isFavorite = true
     }
 }
 

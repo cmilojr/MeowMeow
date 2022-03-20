@@ -226,8 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				9A81E7B527E655230059EEB8 /* HomeVC.swift */,
-				B36C566F26BDC4C500594EED /* MeowMeowVC.swift */,
 				B3BA362B26C3868600C6E7C7 /* DetailItemVC.swift */,
+				B36C566F26BDC4C500594EED /* MeowMeowVC.swift */,
 				B301BE3626C0CA28009C9F11 /* Cells */,
 			);
 			path = Controllers;

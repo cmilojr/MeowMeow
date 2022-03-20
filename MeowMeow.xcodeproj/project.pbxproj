@@ -26,15 +26,13 @@
 		B36C566C26BDA0D100594EED /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566B26BDA0D100594EED /* Identifiers.swift */; };
 		B36C566E26BDC4B800594EED /* MeowMeow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B36C566D26BDC4B800594EED /* MeowMeow.storyboard */; };
 		B36C567026BDC4C500594EED /* MeowMeowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566F26BDC4C500594EED /* MeowMeowVC.swift */; };
-		B3AA50A627E2835600E70731 /* PostDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50A427E2835600E70731 /* PostDataCell.swift */; };
-		B3AA50A727E2835600E70731 /* PostDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3AA50A527E2835600E70731 /* PostDataCell.xib */; };
+		B3AA50A627E2835600E70731 /* CatDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50A427E2835600E70731 /* CatDataCell.swift */; };
+		B3AA50A727E2835600E70731 /* CatDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3AA50A527E2835600E70731 /* CatDataCell.xib */; };
 		B3AA50A927E295F500E70731 /* RemoteConection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50A827E295F500E70731 /* RemoteConection.swift */; };
 		B3AA50AB27E296A300E70731 /* DependencyErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50AA27E296A300E70731 /* DependencyErrors.swift */; };
 		B3AA50AE27E296E200E70731 /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50AD27E296E200E70731 /* StorageError.swift */; };
 		B3AA50B427E29FE100E70731 /* UserInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50B327E29FE100E70731 /* UserInformationModel.swift */; };
 		B3AA50B627E2A91100E70731 /* DetailItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AA50B527E2A91100E70731 /* DetailItem.storyboard */; };
-		B3AA50B927E2F3F600E70731 /* CommentaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50B727E2F3F600E70731 /* CommentaryCell.swift */; };
-		B3AA50BA27E2F3F600E70731 /* CommentaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3AA50B827E2F3F600E70731 /* CommentaryCell.xib */; };
 		B3BA362D26C3868600C6E7C7 /* DetailItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA362B26C3868600C6E7C7 /* DetailItemVC.swift */; };
 		B3C9A18227E1461200DA4EAF /* NetworkResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C9A18127E1461200DA4EAF /* NetworkResources.swift */; };
 		B3C9A18427E146B600DA4EAF /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C9A18327E146B600DA4EAF /* Colors.swift */; };
@@ -78,15 +76,13 @@
 		B36C566B26BDA0D100594EED /* Identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		B36C566D26BDC4B800594EED /* MeowMeow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeowMeow.storyboard; sourceTree = "<group>"; };
 		B36C566F26BDC4C500594EED /* MeowMeowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowMeowVC.swift; sourceTree = "<group>"; };
-		B3AA50A427E2835600E70731 /* PostDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataCell.swift; sourceTree = "<group>"; };
-		B3AA50A527E2835600E70731 /* PostDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDataCell.xib; sourceTree = "<group>"; };
+		B3AA50A427E2835600E70731 /* CatDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDataCell.swift; sourceTree = "<group>"; };
+		B3AA50A527E2835600E70731 /* CatDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatDataCell.xib; sourceTree = "<group>"; };
 		B3AA50A827E295F500E70731 /* RemoteConection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConection.swift; sourceTree = "<group>"; };
 		B3AA50AA27E296A300E70731 /* DependencyErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyErrors.swift; sourceTree = "<group>"; };
 		B3AA50AD27E296E200E70731 /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
 		B3AA50B327E29FE100E70731 /* UserInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationModel.swift; sourceTree = "<group>"; };
 		B3AA50B527E2A91100E70731 /* DetailItem.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailItem.storyboard; sourceTree = "<group>"; };
-		B3AA50B727E2F3F600E70731 /* CommentaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentaryCell.swift; sourceTree = "<group>"; };
-		B3AA50B827E2F3F600E70731 /* CommentaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentaryCell.xib; sourceTree = "<group>"; };
 		B3BA362B26C3868600C6E7C7 /* DetailItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemVC.swift; sourceTree = "<group>"; };
 		B3C9A18127E1461200DA4EAF /* NetworkResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResources.swift; sourceTree = "<group>"; };
 		B3C9A18327E146B600DA4EAF /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -134,8 +130,7 @@
 		B301BE3626C0CA28009C9F11 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B3AA50B727E2F3F600E70731 /* CommentaryCell.swift */,
-				B3AA50A427E2835600E70731 /* PostDataCell.swift */,
+				B3AA50A427E2835600E70731 /* CatDataCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -252,8 +247,7 @@
 		B32401FE26BA492F00102998 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B3AA50A527E2835600E70731 /* PostDataCell.xib */,
-				B3AA50B827E2F3F600E70731 /* CommentaryCell.xib */,
+				B3AA50A527E2835600E70731 /* CatDataCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -398,9 +392,8 @@
 				9A81E7BA27E655420059EEB8 /* Home.storyboard in Resources */,
 				B32401D426BA19DA00102998 /* LaunchScreen.storyboard in Resources */,
 				B32401D126BA19DA00102998 /* Assets.xcassets in Resources */,
-				B3AA50BA27E2F3F600E70731 /* CommentaryCell.xib in Resources */,
 				B36C566E26BDC4B800594EED /* MeowMeow.storyboard in Resources */,
-				B3AA50A727E2835600E70731 /* PostDataCell.xib in Resources */,
+				B3AA50A727E2835600E70731 /* CatDataCell.xib in Resources */,
 				B3AA50B627E2A91100E70731 /* DetailItem.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,8 +490,7 @@
 				B3AA50AE27E296E200E70731 /* StorageError.swift in Sources */,
 				9AFC0CAD27E6678900A841DA /* BreedsModel.swift in Sources */,
 				B3DE07C026EFDD2800EAE863 /* DetaiItemVM.swift in Sources */,
-				B3AA50B927E2F3F600E70731 /* CommentaryCell.swift in Sources */,
-				B3AA50A627E2835600E70731 /* PostDataCell.swift in Sources */,
+				B3AA50A627E2835600E70731 /* CatDataCell.swift in Sources */,
 				9A81E7B727E655230059EEB8 /* HomeVC.swift in Sources */,
 				B341297226C2331D000A1ED2 /* Extensions.swift in Sources */,
 				B3C9A18227E1461200DA4EAF /* NetworkResources.swift in Sources */,

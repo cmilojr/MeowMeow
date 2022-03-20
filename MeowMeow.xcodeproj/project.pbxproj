@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A2174E527E68222008F81E1 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2174E427E68222008F81E1 /* HomeVM.swift */; };
 		9A2174E727E69CEE008F81E1 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2174E627E69CEE008F81E1 /* DataModel.swift */; };
+		9A2174E927E796A1008F81E1 /* RemoteConection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2174E827E796A1008F81E1 /* RemoteConection.swift */; };
 		9A62D9ED27E66BC400A83223 /* MeowMeowVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62D9EC27E66BC400A83223 /* MeowMeowVM.swift */; };
 		9A81E7B727E655230059EEB8 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A81E7B527E655230059EEB8 /* HomeVC.swift */; };
 		9A81E7BA27E655420059EEB8 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A81E7B927E655420059EEB8 /* Home.storyboard */; };
@@ -28,7 +29,6 @@
 		B36C567026BDC4C500594EED /* MeowMeowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36C566F26BDC4C500594EED /* MeowMeowVC.swift */; };
 		B3AA50A627E2835600E70731 /* CatDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50A427E2835600E70731 /* CatDataCell.swift */; };
 		B3AA50A727E2835600E70731 /* CatDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3AA50A527E2835600E70731 /* CatDataCell.xib */; };
-		B3AA50A927E295F500E70731 /* RemoteConection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50A827E295F500E70731 /* RemoteConection.swift */; };
 		B3AA50AB27E296A300E70731 /* DependencyErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50AA27E296A300E70731 /* DependencyErrors.swift */; };
 		B3AA50AE27E296E200E70731 /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50AD27E296E200E70731 /* StorageError.swift */; };
 		B3AA50B427E29FE100E70731 /* UserInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA50B327E29FE100E70731 /* UserInformationModel.swift */; };
@@ -56,6 +56,7 @@
 		785CDAC149232E46A28ABA86 /* Pods-MeowMeowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeowMeowTests.debug.xcconfig"; path = "Target Support Files/Pods-MeowMeowTests/Pods-MeowMeowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9A2174E427E68222008F81E1 /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		9A2174E627E69CEE008F81E1 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		9A2174E827E796A1008F81E1 /* RemoteConection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteConection.swift; sourceTree = "<group>"; };
 		9A62D9EC27E66BC400A83223 /* MeowMeowVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MeowMeowVM.swift; path = "MeowMeow/View Model/MeowMeow/MeowMeowVM.swift"; sourceTree = SOURCE_ROOT; };
 		9A81E7B527E655230059EEB8 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		9A81E7B927E655420059EEB8 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		B36C566F26BDC4C500594EED /* MeowMeowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeowMeowVC.swift; sourceTree = "<group>"; };
 		B3AA50A427E2835600E70731 /* CatDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDataCell.swift; sourceTree = "<group>"; };
 		B3AA50A527E2835600E70731 /* CatDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatDataCell.xib; sourceTree = "<group>"; };
-		B3AA50A827E295F500E70731 /* RemoteConection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConection.swift; sourceTree = "<group>"; };
 		B3AA50AA27E296A300E70731 /* DependencyErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyErrors.swift; sourceTree = "<group>"; };
 		B3AA50AD27E296E200E70731 /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
 		B3AA50B327E29FE100E70731 /* UserInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationModel.swift; sourceTree = "<group>"; };
@@ -201,10 +201,10 @@
 		B32401FA26BA448200102998 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				9A2174E827E796A1008F81E1 /* RemoteConection.swift */,
 				B3DE07BF26EFDD2800EAE863 /* DetaiItemVM.swift */,
 				9A2174E327E681FD008F81E1 /* Home */,
 				9A2174E227E681E0008F81E1 /* MeowMeow */,
-				B3AA50B027E2977400E70731 /* DetailItem */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -269,14 +269,6 @@
 				B3AA50AD27E296E200E70731 /* StorageError.swift */,
 			);
 			path = CustomErrors;
-			sourceTree = "<group>";
-		};
-		B3AA50B027E2977400E70731 /* DetailItem */ = {
-			isa = PBXGroup;
-			children = (
-				B3AA50A827E295F500E70731 /* RemoteConection.swift */,
-			);
-			path = DetailItem;
 			sourceTree = "<group>";
 		};
 		CF4B358B18EC3278452CC3E1 /* Frameworks */ = {
@@ -480,6 +472,7 @@
 				B3AA50AB27E296A300E70731 /* DependencyErrors.swift in Sources */,
 				B3BA362D26C3868600C6E7C7 /* DetailItemVC.swift in Sources */,
 				9A2174E527E68222008F81E1 /* HomeVM.swift in Sources */,
+				9A2174E927E796A1008F81E1 /* RemoteConection.swift in Sources */,
 				B36C567026BDC4C500594EED /* MeowMeowVC.swift in Sources */,
 				9A2174E727E69CEE008F81E1 /* DataModel.swift in Sources */,
 				9A62D9ED27E66BC400A83223 /* MeowMeowVM.swift in Sources */,
@@ -497,7 +490,6 @@
 				B35B5FB626BB8FC80067C8DA /* Networking.swift in Sources */,
 				B36C566C26BDA0D100594EED /* Identifiers.swift in Sources */,
 				B3AA50B427E29FE100E70731 /* UserInformationModel.swift in Sources */,
-				B3AA50A927E295F500E70731 /* RemoteConection.swift in Sources */,
 				B3387C2D27E2508700C6C6F2 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

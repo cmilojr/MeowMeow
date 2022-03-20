@@ -15,13 +15,13 @@ struct BreedsModel: Codable {
     var origin: String
     var description: String
     var life_span: String
-    var image: CatImage
+    var image: CatImage?
 }
 
 struct CatWeight: Codable {
-    var metric: String
+    var metric: String?
 }
 
 struct CatImage: Codable {
-    var url: String
+    var url: String?
 }

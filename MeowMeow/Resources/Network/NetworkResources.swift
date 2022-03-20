@@ -7,23 +7,6 @@
 
 import Foundation
 
-public enum Resources {
-    case posts
-    case postComments(String)
-    case userInformation(String)
-    
-    public var resource: String {
-        switch self {
-        case .posts:
-            return "/posts"
-        case .postComments(let id):
-            return "/posts/\(id)/comments"
-        case .userInformation(let id):
-            return "/users/\(id)"
-        }
-    }
-}
-
 public enum ServerURL: String {
-    case dev = "https://jsonplaceholder.typicode.com"
+    case dev = "https://api.thecatapi.com/v1/breeds"
 }

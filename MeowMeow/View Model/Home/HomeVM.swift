@@ -1,16 +1,15 @@
 //
-//  MeowMeowVC.swift
+//  HomeVM.swift
 //  MeowMeow
 //
 //  Created by Camilo Jiménez on 19/03/22.
 //
 
 import Foundation
-import CoreText
 
-struct MeowMeowVM {
-    var storage: LocalStorageProtocol?
+struct HomeVM {
     var remoteData: RemoteDataPostProtocol?
+    var storage: LocalStorageProtocol?
     
     func getAllPosts(completion: @escaping ([BreedsModel]?, Error?) -> Void) {
         if let remoteData = remoteData {
@@ -19,6 +18,14 @@ struct MeowMeowVM {
             }
         } else {
             completion(nil, DependencyError.remoteDataManagerNotFound)
+        }
+    }
+    
+    func storeCat(cat: BreedsModel, status: Bool) throws {
+        do {
+            try storage?.putPost(didLike: status, catData: cat, date: Date())
+        } catch {
+            throw DependencyError.storageManagerNotFound
         }
     }
 }

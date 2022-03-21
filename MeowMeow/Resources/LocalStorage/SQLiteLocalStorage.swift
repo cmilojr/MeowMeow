@@ -1,6 +1,6 @@
 //
 //  Storage.swift
-//  iBuy
+//  MeowMeow
 //
 //  Created by Camilo Jimenez on 6/08/21.
 //
@@ -34,18 +34,8 @@ struct SQLiteLocalStorage: LocalStorageProtocol {
     }
     
     init() {
-        
-        do {
-            try conectToDatabase()
-        } catch {
-            
-        }
-        
-        do {
-            try createTable()
-        } catch {
-            
-        }
+        try? conectToDatabase()
+        try? createTable()
     }
     
     private func createTable() throws {

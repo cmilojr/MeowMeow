@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NotificationBannerSwift
 
 class MeowMeowVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -16,28 +15,14 @@ class MeowMeowVC: UIViewController {
     @IBOutlet weak var blockBackground: UIView!
     
     fileprivate var viewModel = MeowMeowVM()
-    fileprivate var allPosts: [BreedsModel]?
-    fileprivate var seletedPost: BreedsModel?
+    fileprivate var allCats: [DataModel]?
+    fileprivate var seletedCat: DataModel?
     
     fileprivate func setupTableView() {
-        let nib = UINib(nibName: CellIdentifiers.postDataCell.resource, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: CellIdentifiers.postDataCell.resource)
+        let nib = UINib(nibName: CellIdentifiers.catDataCell.resource, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: CellIdentifiers.catDataCell.resource)
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    fileprivate func setupNavigationControllerAppearance() {
-        navigationController?.navigationBar.prefersLargeTitles = false
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(named: "Green")
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
 
     fileprivate func loading(show: Bool) {
@@ -53,56 +38,32 @@ class MeowMeowVC: UIViewController {
         }
     }
     
-//    fileprivate func getAllPosts() {
-//        self.loading(show: true)
-//        self.allPosts?.removeAll()
-//        viewModel.getAllPosts { postsRes, error in
-//            if let e = error {
-//                DispatchQueue.main.async {
-//                    let banner = NotificationBanner(title: "Error", subtitle: e.localizedDescription, style: .danger)
-//                    self.loading(show: false)
-//                        banner.show()
-//                }
-//            } else if let posts = postsRes {
-//                self.allPosts = posts
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                    self.loading(show: false)
-//                }
-//            }
-//        }
-//    }
+    fileprivate func getAllCats() {
+        self.loading(show: true)
+        self.allCats = viewModel.getAllStoredCats()
+        DispatchQueue.main.async {
+            if self.allCats?.count == 0 {
+                self.emptyState.isHidden = false
+                self.tableView.isHidden = true
+            }
 
+            self.tableView.reloadData()
+            self.loading(show: false)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-
         viewModel.storage = SQLiteLocalStorage()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        setupNavigationControllerAppearance()
-
+        getAllCats()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail" {
             let vc = segue.destination as! DetailItemVC
-            vc.selectedPost = self.seletedPost
+            vc.selectedPost = self.seletedCat
         }
-    }
-    
-    @IBAction func reloadData(_ sender: Any) {
-        
-    }
-    @IBAction func clearData(_ sender: Any) {
-
-    }
-    
-    @IBAction func segmentAction(_ sender: UISegmentedControl) {
-
     }
 }
 
@@ -118,14 +79,14 @@ extension MeowMeowVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allPosts?.count ?? 0
+        return allCats?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.postDataCell.resource, for: indexPath) as! PostDataCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.catDataCell.resource, for: indexPath) as! CatDataCell
         
-        let post = allPosts?[indexPath.row]
-        cell.setup(isFavorite: false, isReaded: false, description: post?.name ?? "")
+        let cat = allCats?[indexPath.row]
+        cell.setup(isFavorite: cat?.like ?? false, catData: cat!.catInfo, interactedDate: cat!.dateInteraction)
         
         cell.selectionStyle = .none
         
@@ -134,7 +95,7 @@ extension MeowMeowVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.loading(show: true)
-        self.seletedPost = allPosts?[indexPath.row]
+        self.seletedCat = allCats?[indexPath.row]
         self.loading(show: false)
         performSegue(withIdentifier: "toDetail", sender: nil)
     }

@@ -6,17 +6,14 @@
 //
 
 import UIKit
-// api_key=458a72c8-783b-453b-9c53-72bea3427bb0
+
 public enum CellIdentifiers {
-    case postDataCell
-    case commentatyCell
+    case catDataCell
     
     public var resource: String {
         switch self {
-        case .postDataCell:
-            return "PostDataCell"
-        case .commentatyCell:
-            return "CommentaryCell"
+        case .catDataCell:
+            return "CatDataCell"
         }
     }
 }

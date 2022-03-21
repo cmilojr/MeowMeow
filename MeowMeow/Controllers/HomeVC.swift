@@ -10,10 +10,26 @@ import UIKit
 class HomeVC: UIViewController {
     @IBOutlet weak var catImage: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var blockBackground: UIView!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var dislikeButton: UIButton!
+    
     var totalCats = [BreedsModel]()
     var viewModel = HomeVM()
     var currentCat = 0
+    
+    fileprivate func loading(show: Bool) {
+        DispatchQueue.main.async {
+            self.loadingSpinner.isHidden = !show
+            self.view.isUserInteractionEnabled = !show
+            self.blockBackground.isHidden = !show
+            if show {
+                self.loadingSpinner.startAnimating()
+            } else {
+                self.loadingSpinner.stopAnimating()
+            }
+        }
+    }
     
     func getNextCat() {
         let cat = totalCats[currentCat]
@@ -50,7 +66,7 @@ class HomeVC: UIViewController {
     fileprivate func setupReactionButton() {
         likeButton.layer.borderWidth = 10
         likeButton.layer.cornerRadius = 50
-        likeButton.layer.borderColor = UIColor.green.cgColor
+        likeButton.layer.borderColor = UIColor(named: "Green")?.cgColor
         likeButton.setTitle("", for: .normal)
         
         dislikeButton.layer.borderWidth = 10
@@ -60,6 +76,7 @@ class HomeVC: UIViewController {
     }
     
     fileprivate func getDataFromServer() {
+        self.loading(show: true)
         viewModel.getAllPosts { cats, error in
             if let error = error {
                 print(error)
@@ -67,6 +84,7 @@ class HomeVC: UIViewController {
                 self.totalCats = cats
                 DispatchQueue.main.async {
                     self.getNextCat()
+                    self.loading(show: false)
                 }
             }
         }
